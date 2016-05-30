@@ -15,6 +15,8 @@ import java.io.*;
 import java.util.*;
 import org.jdom.*;
 import org.jdom.input.SAXBuilder;
+import javax.swing.JList;
+import javax.swing.JScrollPane;
 
 public class TextAdventureGUI extends JFrame implements ActionListener {
 
@@ -23,6 +25,9 @@ public class TextAdventureGUI extends JFrame implements ActionListener {
 	 * @wbp.nonvisual location=-20,79
 	 */
 	private final JPanel panel = new JPanel();
+	//private final JList list = new JList();
+	JScrollPane scrollPane;
+	private final JTextPane txtpn = new JTextPane();
 
 	/**
 	 * Launch the application.
@@ -67,23 +72,14 @@ public class TextAdventureGUI extends JFrame implements ActionListener {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(5, 0));
+		txtpn.setText(scene.getChildText("SceneDescription"));;
 		
-		//String buttonNames[] = {"choice1", "choice2", "choice3", "choice4", "choice5"};
-		JButton[] cButtons = new JButton[18];
+		JList list = new JList(choices.toArray());
+		scrollPane = new JScrollPane(list);
+		contentPane.add(txtpn);
 		
-		for(int temp = 1; temp <= choices.size(); temp++)
-		{
-			Element choice = choices.get(temp);
-			//String bName = buttonNames[temp];
-			cButtons[temp] = new JButton(choice.getChildText("choiceDescription"));
-			cButtons[temp].addActionListener(this);
-			contentPane.add(cButtons[temp]);
-			
-		}
-		
-		JTextArea textArea = new JTextArea(scene.getChildText("sceneDescription"));
-		textArea.setBounds(5, 11, 451, 104);
-		contentPane.add(textArea);
+		contentPane.add(scrollPane);
+		scrollPane.setViewportView(list);
 		
 	}
 
