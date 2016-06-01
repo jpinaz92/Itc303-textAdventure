@@ -1,0 +1,59 @@
+<?xml version = "1.0"?>
+<Story>
+	<Scene id = "scene1">
+		<SceneDescription>Insert Scene Description
+		</SceneDescription>
+	
+		<choice no="1">
+			<choiceDescription>choice description 1 </choiceDescription>
+			<outcome>end1</outcome>
+		</choice>
+	
+		<choice no="2">
+			<choiceDescription>choice description 2 </choiceDescription>
+			<outcome>scene3</outcome>
+		</choice>
+	</Scene>
+
+	<Scene id = "scene2">
+		<SceneDescription>You are in a room, it's dark but you can see a faint sliver of light coming from what looks like a crack in the door what would you like to do?
+		</SceneDescription>
+	
+		<choice no="1">
+			<choiceDescription>Wait Here </choiceDescription>
+			<outcome>scene1</outcome>
+		</choice>
+	
+		<choice no="2">
+			<choiceDescription>Try to leave the room </choiceDescription>
+			<outcome>scene3</outcome>
+		</choice>
+		
+		<choice no="3">
+			<choiceDescription>Open the door to let in light and search the room</choiceDescription>
+			<outcome>scene4</outcome>
+		</choice>
+	</Scene>
+
+	<Scene id = "scene3">
+		<SceneDescription>Insert Scene Description
+		</SceneDescription>
+	
+		<choice no="1">
+			<choiceDescription>choice description 1 </choiceDescription>
+			<outcome>end1</outcome>
+		</choice>
+	
+		<choice no="2">
+			<choiceDescription>choice description 2 </choiceDescription>
+			<outcome>scene1</outcome>
+		</choice>
+	</Scene>
+	
+	<Scene id = "end1">
+		<SceneDescription>ending
+		</SceneDescription>
+	
+	</Scene>
+
+</Story>

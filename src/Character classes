@@ -1,0 +1,112 @@
+<?xml version = "1.0"?>
+<example characters>
+	<Character id = "W">
+		<Name> Dave </Name>
+		<Gender> Male </Gender>
+		<Class> Warrior </Class>
+		<Attributes>
+			<Str> 15 </Str>
+			<Con> 10 </Con>
+			<Dex> 8 </Dex>
+			<Int> 4 </Int>
+			<Fth> 4 </Fth>
+			<Chr> 6 </Chr>
+		</Attributes>
+		<Equipment>
+			<Weapons>
+				<weapon id= "Longsword" type= "melee" dmg= "10" def= "10%" lbs= "8">
+				<weapon id= "Kiteshield" type= "melee" dmg= "1" def= "100%" lbs= "20"> 
+			</Weapons>
+			<Armour>
+				<armour id= "Platehelm" type= "helm" material= "steel" res= "4" lbs= "6">
+				<armour id= "Curiass" type= "chest" material= "steel" res= "8" lbs= "12">
+				<armour id= "sabatons" type= "legs" material= "steel" res= "6" lbs= "10">
+			</Armour>
+			<Consumables>
+			
+			</Consumables>
+		</Equipment>
+	</Character>
+		<Character id = "R">
+		<Name> Ric </Name>
+		<Gender> Male </Gender>
+		<Class> Rogue </Class>
+		<Attributes>
+			<Str> 8 </Str>
+			<Con> 6 </Con>
+			<Dex> 15 </Dex>
+			<Int> 8 </Int>
+			<Fth> 4 </Fth>
+			<Chr> 10 </Chr>
+		</Attributes>
+		<Equipment>
+			<Weapons>
+				<weapon id= "dagger" type= "melee" dmg= "5" def= "5%" lbs= "1">
+				<weapon id= "bow" type= "ranged" dmg= "8" def= "0%" lbs= "2"> 
+			</Weapons>
+			<Armour>
+				<armour id= "Mask" type= "helm" material= "leather" res= "2" lbs= "2">
+				<armour id= "Coat" type= "chest" material= "leather" res= "4" lbs= "6">
+				<armour id= "Boots" type= "legs" material= "leather" res= "4" lbs= "4">
+			</Armour>
+			<Consumables>
+			
+			</Consumables>
+		</Equipment>
+	</Character>
+	<Character id = "M">
+		<Name> Trish </Name>
+		<Gender> Female </Gender>
+		<Class> Mage </Class>
+		<Attributes>
+			<Str> 4 </Str>
+			<Con> 6 </Con>
+			<Dex> 8 </Dex>
+			<Int> 15 </Int>
+			<Fth> 6 </Fth>
+			<Chr> 10 </Chr>
+		</Attributes>
+		<Equipment>
+			<Weapons>
+				<weapon id= "dagger" type= "melee" dmg= "5" def= "5%" lbs= "1">
+				<weapon id= "Staff" type= "magic" dmg= "12" def= "10%" lbs= "6"> 
+			</Weapons>
+			<Armour>
+				<armour id= "WizardHat" type= "helm" material= "cloth" res= "1" lbs= "1">
+				<armour id= "Robes" type= "chest" material= "cloth" res= "3" lbs= "2">
+				<armour id= "Boots" type= "legs" material= "leather" res= "4" lbs= "4">
+			</Armour>
+			<Consumables>
+			
+			</Consumables>
+		</Equipment>
+	</Character>
+		<Character id = "C">
+		<Name> Paul </Name>
+		<Gender> Male </Gender>
+		<Class> Cleric </Class>
+		<Attributes>
+			<Str> 8 </Str>
+			<Con> 10 </Con>
+			<Dex> 6 </Dex>
+			<Int> 4 </Int>
+			<Fth> 15 </Fth>
+			<Chr> 4 </Chr>
+		</Attributes>
+		<Equipment>
+			<Weapons>
+				<weapon id= "Mace" type= "melee" dmg= "10" def= "30%" lbs= "12">
+				<weapon id= "HeaterShield" type= "melee" dmg= "1" def= "90%" lbs= "8"> 
+				<weapon id= "Talisman" type= "magic" dmg= "5" def= "0%" lbs= "1">
+			</Weapons>
+			<Armour>
+				<armour id= "Hood" type= "helm" material= "cloth" res= "1" lbs= "1">
+				<armour id= "Hauberk" type= "chest" material= "chain" res= "6" lbs= "10">
+				<armour id= "sabatons" type= "legs" material= "steel" res= "6" lbs= "10">
+			</Armour>
+			<Consumables>
+			
+			</Consumables>
+		</Equipment>
+	</Character>
+</example characters>
