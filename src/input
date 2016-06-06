@@ -1,43 +1,59 @@
 <?xml version = "1.0"?>
 <Story>
 	<Scene id = "scene1">
-		<SceneDescription>Insert Scene Description
+		<SceneDescription>Advancing through the doors into the larger room of of the villa's main hall you are met by the hostess. Gleaming in her red silk dress and her makeup smeared as if she had been crying, the lady offers you a drink and places it on a small table to hr left. This being the House of Shunko's Tears, nothing seemed out of the ordinary. The wooden walls were of red pine, common in this region and the skirting boards around the room, elegant and gilded. A smell of burning incense filled the air rife with a sent similar to the the finest perfumes and expense that Descron's capital often brandished within its wealthy citizens homes and plazas. It was common for the houses of Shunko's tears to bear a drink for any patron the hostess deems worthy.
 		</SceneDescription>
 	
 		<choice no="1">
-			<choiceDescription>choice description 1 </choiceDescription>
-			<outcome>end1</outcome>
+			<choiceDescription>Give the Hostess something to really cry about (Hit Her) </choiceDescription>
+			<outcome>scene2</outcome>
 		</choice>
 	
 		<choice no="2">
-			<choiceDescription>choice description 2 </choiceDescription>
-			<outcome>scene3</outcome>
-		</choice>
-	</Scene>
-
-	<Scene id = "scene2">
-		<SceneDescription>You are in a room, it's dark but you can see a faint sliver of light coming from what looks like a crack in the door what would you like to do?
-		</SceneDescription>
-	
-		<choice no="1">
-			<choiceDescription>Wait Here </choiceDescription>
-			<outcome>scene1</outcome>
-		</choice>
-	
-		<choice no="2">
-			<choiceDescription>Try to leave the room </choiceDescription>
+			<choiceDescription>Take the drink and wait for her to usher you into another room  </choiceDescription>
 			<outcome>scene3</outcome>
 		</choice>
 		
 		<choice no="3">
-			<choiceDescription>Open the door to let in light and search the room</choiceDescription>
+			<choiceDescription>Have your way with her, start rough </choiceDescription>
+			<outcome>scene2</outcome>
+		</choice>
+		
+		<choice no="4">
+			<choiceDescription>Have your Way with her, start softly </choiceDescription>
+			<outcome>scene2</outcome>
+		</choice>
+		
+		<choice no="5">
+			<choiceDescription>Hold your Composure, Ask for the information of Malthus Van Bane </choiceDescription>
 			<outcome>scene4</outcome>
+		</choice>
+		
+	</Scene>
+
+	<Scene id = "scene2">
+				<SceneDescription>	She appears to like this, taking you into the next room with her she finishes off your drink, taking you into a back room she disrobes and pushes you to the bed. The room is darker than any of the ones you had been in previously and it appears to have sentimental items not seen in other rooms. This must be the hostess’ personal room. 
+				</SceneDescription>
+	
+		<choice no="1">
+			<choiceDescription> Say Nothing and get dressed </choiceDescription>
+			<outcome>scene3</outcome>
+		</choice>
+	
+		<choice no="2">
+			<choiceDescription> Tell her that he is who you need to stop </choiceDescription>
+			<outcome>scene3</outcome>
+		</choice>
+		
+		<choice no="3">
+			<choiceDescription> “Shut your Mouth” Push her out of the bed  </choiceDescription>
+			<outcome>scene10</outcome>
 		</choice>
 	</Scene>
 
 	<Scene id = "scene3">
-		<SceneDescription>Insert Scene Description
-		</SceneDescription>
+		<SceneDescription>She takes a hold of your hands then leads you towards a lit room where a man is laying face down on a bed and a woman administers acupuncture to his back. “Are you here for the traitor that once called me his friend stranger?” the large man said as you enter the room, the Hostess walking away behind you. “I believe you and I will have to speak further on this in a more formal sense, take a seat near me and I will tell you of his wear about and what we can do.... for Each other.” 
+	</SceneDescription>
 	
 		<choice no="1">
 			<choiceDescription>choice description 1 </choiceDescription>

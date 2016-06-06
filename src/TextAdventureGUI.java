@@ -14,6 +14,10 @@ import java.util.*;
 import javax.swing.DefaultListModel;
 import org.jdom.*;
 import org.jdom.input.SAXBuilder;
+import org.xml.sax.InputSource;
+
+import com.sun.org.apache.xerces.internal.parsers.SAXParser;
+
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 
@@ -42,6 +46,12 @@ public class TextAdventureGUI extends JFrame implements ActionListener {
                 try {
                     TextAdventureGUI storyBoard = new TextAdventureGUI();
                     File inputFile = new File("input");
+                    //InputStream inStream = new FileInputStream(inputFile);
+                    //Reader reader = new InputStreamReader(inStream, "UTF-8");
+                    //InputSource inSource = new InputSource(reader);
+                    //inSource.setEncoding("UTF-8");
+
+                    //SAXParser.parse(inSource, handler);
                     SAXBuilder saxB = new SAXBuilder();
 
                     Document doc = saxB.build(inputFile);
