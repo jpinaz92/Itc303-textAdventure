@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.GridLayout;
+import java.awt.Point;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
@@ -115,13 +116,18 @@ public class TextAdventureGUI extends JFrame implements ActionListener {
         list = new JList();
         list.setModel(model);
         scrollPane = new JScrollPane(list);
+
         contentPane.add(scrollPane_1);
         scrollPane_1.setViewportView(txtpn);
+
         txtpn.setEditable(false);
+        //txtpn.setCaretPosition(0);
         Button.addActionListener(this);
         contentPane.add(scrollPane);
         scrollPane.setViewportView(list);
         contentPane.add(Button);
+        scrollPane_1.getVerticalScrollBar().setValue(0);
+        //scrollPane.getViewport().setViewPosition(new Point(0, 0));;
     }
 
     @Override
@@ -142,6 +148,7 @@ public class TextAdventureGUI extends JFrame implements ActionListener {
 
     public void initScene(Scene scene) {
         txtpn.setText(scene.getDescrition());
+        txtpn.setCaretPosition(0);
         model.clear();
         for (Choice choice : scene.getChoices()) {
             model.addElement(choice);
