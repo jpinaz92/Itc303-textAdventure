@@ -46,7 +46,7 @@ public class TextAdventureGUI extends JFrame implements ActionListener {
             public void run() {
                 try {
                     TextAdventureGUI storyBoard = new TextAdventureGUI();
-                    File inputFile = new File("input");
+                    File inputFile = new File("Demo");
                     //InputStream inStream = new FileInputStream(inputFile);
                     //Reader reader = new InputStreamReader(inStream, "UTF-8");
                     //InputSource inSource = new InputSource(reader);

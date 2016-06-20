@@ -1,0 +1,67 @@
+
+<?xml version = "1.0"?>
+
+<characterclass type="troll" life="10" 
+
+<NPC id="Fred" type="troll">
+
+<weapon id="sword" type="melee" hitpoints="10" defence="5">
+<weapon id="shield type="defence" hitpoints="0" defence="15">
+
+
+<Scene id="Scene1">
+	<SceneDescription>Insert Scene Description
+	</SceneDescription>
+	
+	<choice no="1">
+		<choiceDescription>choice description 1</choiceDescription>
+		<outcome type="scene" >Scene2</outcome>
+	</choice>
+	
+	<choice no="2">
+		<choiceDescription>choice description 2</choiceDescription>
+		<outcome type="combat">Combat1</outcome>
+	</choice>
+	<choice no="3">
+		<choiceDescription>choice description 3</choiceDescription>
+		<outcome>outcome 3</outcome>
+	</choice>
+	<choice no="4">
+		<choiceDescription>choice description 4</choiceDescription>
+		<outcome>outcome 4</outcome>
+	</choice>
+</Scene>
+
+<Combat id="Combat1" enemy= "Fred">
+	<action no="1">
+		<actionDescription>choice description 2</actionDescription>
+		<attack type="melee" weapon="sword"/>
+	</action>
+	<action no="2">
+		<actionDescription>action description 2</actionDescription>
+		<defend type="melee" weapon="shield"/>
+	</action>
+</Combat>
+
+<Scene id="Scene2">
+	<SceneDescription>Insert Scene Description
+	</SceneDescription>
+	
+	<choice no="1">
+		<choiceDescription>choice description 1</choiceDescription>
+		<outcome>outcome 1</outcome>
+	</choice>
+	
+	<choice no="2">
+		<choiceDescription>choice description 2</choiceDescription>
+		<outcome>outcome 2</outcome>
+	</choice>
+	<choice no="3">
+		<choiceDescription>choice description 3</choiceDescription>
+		<outcome>outcome 3</outcome>
+	</choice>
+	<choice no="4">
+		<choiceDescription>choice description 4</choiceDescription>
+		<outcome>outcome 4</outcome>
+	</choice>
+</Scene>
