@@ -79,7 +79,8 @@ public class TextAdventureGUI extends JFrame implements ActionListener {
     private Scene buildScene(Element sceneElement) {
         Scene scene = null;
         String id = sceneElement.getAttributeValue("id");
-        if (id != null) {
+        String type = sceneElement.getAttributeValue("type");
+        if (id != null && type != "combat") {
             String sceneDescription = sceneElement.getChild("SceneDescription").getText();
             scene = new Scene(id, sceneDescription);
             List<Element> sceneChildren = sceneElement.getChildren();
@@ -89,7 +90,35 @@ public class TextAdventureGUI extends JFrame implements ActionListener {
                 }
             }
         }
+        
+        if (id != null && type == "combat") {
+        	 String sceneDescription = sceneElement.getChild("SceneDescription").getText();
+             scene = new Scene(id, sceneDescription);
+             List<Element> sceneChildren = sceneElement.getChildren();
+             for (Element element : sceneChildren) {
+                 if (element.getName().equals("enemy")) {
+                     scene.getCharacters().add(this.buildCharacter(element));
+                 }
+             }
+        }
         return scene;
+    }
+    
+    private Character buildCharacter(Element charElement) {
+    	Character npc = null;
+    	String id = charElement.getAttributeValue("id"); 
+    	if (id != null)
+    	{
+    		npc = new Character();
+    		npc.setId(id);
+    		npc.setCon(charElement.getAttributeValue("con"));
+    		npc.setStr(charElement.getAttributeValue("str"));
+    		npc.setDex(charElement.getAttributeValue("dex"));
+    		npc.setIntl(charElement.getAttributeValue("intl"));
+    		npc.setFth(charElement.getAttributeValue("fth"));
+    		npc.setChr(charElement.getAttributeValue("chr"));
+    	}
+    	return npc;
     }
 
     private Choice buildChoice(Element choiceElement) {
@@ -141,13 +170,23 @@ public class TextAdventureGUI extends JFrame implements ActionListener {
             }
         }
     }
-
+    
+    public void Stats(Character Enemy, Scene scene)
+    {
+    	int con = Integer.parseInt(Enemy.getCon());
+    	int str = Integer.parseInt(Enemy.getStr());
+    	int dex = Integer.parseInt(Enemy.getDex());
+    	int intl = Integer.parseInt(Enemy.getIntl());
+    	int fth = Integer.parseInt(Enemy.getFth());
+    	int chr = Integer.parseInt(Enemy.getChr());
+    }
+    
     public Map<String, Scene> getScenesMap() {
         return scenesMap;
     }
 
     public void initScene(Scene scene) {
-        txtpn.setText(scene.getDescrition());
+        txtpn.setText(scene.getDescription());
         txtpn.setCaretPosition(0);
         model.clear();
         for (Choice choice : scene.getChoices()) {

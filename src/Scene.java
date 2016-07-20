@@ -8,10 +8,11 @@ import java.util.Objects;
  */
 public class Scene {
    private  String id;
-   private String descrition;
+   private String description;
+   private String type;
 
     List<Choice> choices = new ArrayList<Choice>();
-
+    List<Character> characters = new ArrayList<Character>();
     @Override
     public int hashCode() {
         int hash = 3;
@@ -36,21 +37,25 @@ public class Scene {
         return true;
     }
 
-    public Scene(String id, String descrition) {
+    public Scene(String id, String description) {
         this.id = id;
-        this.descrition = descrition;
+        this.description = description;
     }
 
     public List<Choice> getChoices() {
         return choices;
+    }
+    
+    public List<Character> getCharacters() {
+    	return characters;
     }
 
     public String getId() {
         return id;
     }
 
-    public String getDescrition() {
-        return descrition;
+    public String getDescription() {
+        return description;
     }
 
 
