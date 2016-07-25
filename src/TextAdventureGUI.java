@@ -63,6 +63,7 @@ public class TextAdventureGUI extends JFrame implements ActionListener {
                     for (Element sceneElement : scenesList) {
                         Scene scene = storyBoard.buildScene(sceneElement);
                         storyBoard.getScenesMap().put(scene.getId(), scene);
+                        //storyBoard.buildCharacter(sceneElement);
                         if (firstScene == null) {
                             firstScene = scene;
                         }
@@ -117,6 +118,8 @@ public class TextAdventureGUI extends JFrame implements ActionListener {
     		npc.setIntl(charElement.getAttributeValue("intl"));
     		npc.setFth(charElement.getAttributeValue("fth"));
     		npc.setChr(charElement.getAttributeValue("chr"));
+    		npc.Stats(npc);
+
     	}
     	return npc;
     }
@@ -171,15 +174,7 @@ public class TextAdventureGUI extends JFrame implements ActionListener {
         }
     }
     
-    public void Stats(Character Enemy, Scene scene)
-    {
-    	int con = Integer.parseInt(Enemy.getCon());
-    	int str = Integer.parseInt(Enemy.getStr());
-    	int dex = Integer.parseInt(Enemy.getDex());
-    	int intl = Integer.parseInt(Enemy.getIntl());
-    	int fth = Integer.parseInt(Enemy.getFth());
-    	int chr = Integer.parseInt(Enemy.getChr());
-    }
+
     
     public Map<String, Scene> getScenesMap() {
         return scenesMap;

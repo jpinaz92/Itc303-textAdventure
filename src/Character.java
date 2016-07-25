@@ -93,6 +93,18 @@ public class Character {
         }
         return true;
     }
+    
+    public void Stats(Character Enemy)
+    {
+    	int con = Integer.parseInt(Enemy.getCon());
+    	int str = Integer.parseInt(Enemy.getStr());
+    	int dex = Integer.parseInt(Enemy.getDex());
+    	int intl = Integer.parseInt(Enemy.getIntl());
+    	int fth = Integer.parseInt(Enemy.getFth());
+    	int chr = Integer.parseInt(Enemy.getChr());
+    	
+    	int HP = con * 2;
+    }
 
 
 
