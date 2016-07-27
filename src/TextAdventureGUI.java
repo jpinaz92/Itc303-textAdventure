@@ -67,6 +67,9 @@ public class TextAdventureGUI extends JFrame implements ActionListener {
                         if (firstScene == null) {
                             firstScene = scene;
                         }
+                        if (scene.getType() == "combat") {
+                        	storyBoard.fight(scene);
+                        }
                     }
                     storyBoard.initScene(firstScene);
                     storyBoard.setVisible(true);
@@ -83,7 +86,7 @@ public class TextAdventureGUI extends JFrame implements ActionListener {
         String type = sceneElement.getAttributeValue("type");
         if (id != null && type != "combat") {
             String sceneDescription = sceneElement.getChild("SceneDescription").getText();
-            scene = new Scene(id, sceneDescription);
+            scene = new Scene(id, sceneDescription, type);
             List<Element> sceneChildren = sceneElement.getChildren();
             for (Element element : sceneChildren) {
                 if (element.getName().equals("choice")) {
@@ -94,7 +97,7 @@ public class TextAdventureGUI extends JFrame implements ActionListener {
         
         if (id != null && type == "combat") {
         	 String sceneDescription = sceneElement.getChild("SceneDescription").getText();
-             scene = new Scene(id, sceneDescription);
+             scene = new Scene(id, sceneDescription, type);
              List<Element> sceneChildren = sceneElement.getChildren();
              for (Element element : sceneChildren) {
                  if (element.getName().equals("enemy")) {
@@ -103,6 +106,40 @@ public class TextAdventureGUI extends JFrame implements ActionListener {
              }
         }
         return scene;
+    }
+    
+    private void fight(Scene scene) {
+    	Character enemy = buildCharacter(null);
+    	int con = Integer.parseInt(enemy.getCon());
+    	int str = Integer.parseInt(enemy.getStr());
+    	int dex = Integer.parseInt(enemy.getDex());
+    	int intl = Integer.parseInt(enemy.getIntl());
+    	int fth = Integer.parseInt(enemy.getFth());
+    	int chr = Integer.parseInt(enemy.getChr());
+    	
+    	//hard coded player stats emulating warrior class used until character creator scenes are completely written		
+    	//<Str> 15 </Str>
+		//<Con> 10 </Con>
+		//<Dex> 8 </Dex>
+		//<Int> 4 </Int>
+		//<Fth> 4 </Fth>
+		//<Chr> 6 </Chr>
+    	int pcon = 10;
+    	int pstr = 15;
+    	int pdex = 8;
+    	int pintl = 4;
+    	int pfth = 4;
+    	int pchr = 6;
+    	
+    	
+    	
+    	int HP = con * 2;
+    	int PHP = pcon * 2;
+    	
+    	while (HP > 0 ^ PHP > 0)
+    	{
+    		
+    	}
     }
     
     private Character buildCharacter(Element charElement) {
@@ -118,7 +155,7 @@ public class TextAdventureGUI extends JFrame implements ActionListener {
     		npc.setIntl(charElement.getAttributeValue("intl"));
     		npc.setFth(charElement.getAttributeValue("fth"));
     		npc.setChr(charElement.getAttributeValue("chr"));
-    		npc.Stats(npc);
+    		//npc.Stats(npc);
 
     	}
     	return npc;

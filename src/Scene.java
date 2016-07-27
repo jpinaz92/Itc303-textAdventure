@@ -37,9 +37,10 @@ public class Scene {
         return true;
     }
 
-    public Scene(String id, String description) {
+    public Scene(String id, String description, String type) {
         this.id = id;
         this.description = description;
+        this.type = type;
     }
 
     public List<Choice> getChoices() {
@@ -56,6 +57,10 @@ public class Scene {
 
     public String getDescription() {
         return description;
+    }
+    
+    public String getType() {
+    	return type;
     }
 
 
