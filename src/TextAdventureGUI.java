@@ -46,7 +46,9 @@ public class TextAdventureGUI extends JFrame implements ActionListener {
             public void run() {
                 try {
                     TextAdventureGUI storyBoard = new TextAdventureGUI();
+                    FileOutputStream out = new FileOutputStream("saveFile");
                     File inputFile = new File("Demo");
+                    ObjectOutputStream save = new ObjectOutputStream(out);
                     //InputStream inStream = new FileInputStream(inputFile);
                     //Reader reader = new InputStreamReader(inStream, "UTF-8");
                     //InputSource inSource = new InputSource(reader);
@@ -56,6 +58,7 @@ public class TextAdventureGUI extends JFrame implements ActionListener {
                     SAXBuilder saxB = new SAXBuilder();
 
                     Document doc = saxB.build(inputFile);
+                 
 
                     Element storyElement = doc.getRootElement();
                     Scene firstScene = null;
@@ -73,6 +76,8 @@ public class TextAdventureGUI extends JFrame implements ActionListener {
                     }
                     storyBoard.initScene(firstScene);
                     storyBoard.setVisible(true);
+                    save.writeObject(firstScene);
+                    save.flush();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -136,9 +141,19 @@ public class TextAdventureGUI extends JFrame implements ActionListener {
     	int HP = con * 2;
     	int PHP = pcon * 2;
     	
+    	int initiative = dex + enemy.roll(20);
+    	int pinitiative = pdex + enemy.roll(20);
+    	
     	while (HP > 0 ^ PHP > 0)
     	{
-    		
+    		if (pinitiative <= initiative)
+    		{
+    			
+    		}
+    		else
+    		{
+    			
+    		}
     	}
     }
     
@@ -211,6 +226,11 @@ public class TextAdventureGUI extends JFrame implements ActionListener {
         }
     }
     
+    public void load(Scene scene) {
+    	FileInputStream in = new FileInputStream("saveFile");
+    	ObjectInputStream load = new ObjectInputStream(in);
+    	scene = (Scene)load.readObject();
+    }
 
     
     public Map<String, Scene> getScenesMap() {
