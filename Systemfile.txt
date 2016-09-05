@@ -1,0 +1,13 @@
+default
+90
+50
+100
+55
+55
+2
+55
+21
+Hammer 100
+Axe 100
+Helm Splitter 60
+Blood Rapture 200

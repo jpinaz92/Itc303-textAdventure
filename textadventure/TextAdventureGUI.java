@@ -1,72 +1,46 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package textadventure;
 
-//import java.io.BufferedReader;
-//import java.io.BufferedWriter;
-//import java.io.FileNotFoundException;
-//import java.io.FileReader;
-//import java.io.FileWriter;
-//import java.io.IOException;
-//import java.util.Random;
+import java.awt.Event;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.SwingUtilities;
-import java.io.*;
-import java.util.*;
-import java.awt.GridLayout;
-import java.awt.Point;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JTextPane;
-import javax.swing.DefaultListModel;
-import org.jdom2.*;
-import org.jdom2.input.SAXBuilder;
-import org.xml.sax.InputSource;
-import com.sun.org.apache.xerces.internal.parsers.SAXParser;
-import javax.swing.JList;
-import javax.swing.JScrollPane;
 
+import org.jdom.Document;
+import org.jdom.Element;
+import org.jdom.JDOMException;
+import org.jdom.input.SAXBuilder;
 
+/**
+ *
+ * @author ALESON
+ */
 public class TextAdventureGUI extends javax.swing.JFrame {
-    
-    
-    private javax.swing.JButton confirmButton;
-    private javax.swing.JList enemyList;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JLabel label;
-    private javax.swing.JList list;
-    private javax.swing.JButton load;
-    private javax.swing.JLabel optionsLabel;
-    private javax.swing.JList optionsList;
-    private javax.swing.JList overviewList;
-    private javax.swing.JList playerList;
-    private javax.swing.JButton save;
-    private javax.swing.JButton use;
-    private javax.swing.JLabel useMagicLabel;
-    private javax.swing.JList useMagicList;
-    //private final JTextPane txtpn = new JTextPane();
-    //private final JScrollPane scrollPane_1 = new JScrollPane();
-    private Map<String, Scene> scenesMap = new HashMap<String, Scene>();
-    
-
-    DefaultListModel model;
-    DefaultListModel playerModel;
-    DefaultListModel enemyModel;
-    DefaultListModel optionsModel;
-    DefaultListModel listModel;
-    Character player;
-    Character enemy;
-
+    String gameMode = "story"; 
+    Scene currenBatleScene;
+    DefaultListModel model, playermodel, systemmodel, optionsmodel;
+    DefaultListModel listmodel;
+    Character player, system;
+    private Map<String, Scene> scenesMap = new HashMap<String, Scene>(); 
     String weapon = "default";
     int weaponHealth = 100;
     String sweapon = "default";
@@ -74,117 +48,62 @@ public class TextAdventureGUI extends javax.swing.JFrame {
     String current = "";
     int magicEffect = 0;
 
-    
-        public static void main(String args[]) {
-
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TextAdventureGUI.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TextAdventureGUI.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TextAdventureGUI.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TextAdventureGUI.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-
-
-
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                 try {
-                    TextAdventureGUI storyBoard = new TextAdventureGUI();
-                    //FileOutputStream out = new FileOutputStream("saveFile");
-                    File inputFile = new File("Demo");
-                    //ObjectOutputStream save = new ObjectOutputStream(out);
-                    //InputStream inStream = new FileInputStream(inputFile);
-                    //Reader reader = new InputStreamReader(inStream, "UTF-8");
-                    //InputSource inSource = new InputSource(reader);
-                    //inSource.setEncoding("UTF-8");
-
-                    //SAXParser.parse(inSource, handler);
-                    SAXBuilder saxB = new SAXBuilder();
-
-                    Document doc = saxB.build(inputFile);
-                 
-
-                    Element storyElement = doc.getRootElement();
-                    Scene firstScene = null;
-                    List<Element> scenesList = storyElement.getChildren();
-                    for (Element sceneElement : scenesList) {
-                        Scene scene = storyBoard.buildScene(sceneElement);
-                        storyBoard.getScenesMap().put(scene.getId(), scene);
-                        //storyBoard.buildCharacter(sceneElement);
-                        if (firstScene == null) {
-                            firstScene = scene;
-                        }
-                       // if (scene.getType() == "combat") {
-                        	
-                        //}
-                    }
-                    storyBoard.initScene(firstScene);
-                    storyBoard.setVisible(true);
-                    //save.writeObject(firstScene);
-                    //save.flush();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        new TextAdventureGUI().setVisible(true);
-    }
-
+    /**
+     * Creates new form TextAdventureGUI
+     */
     public TextAdventureGUI() {
         initComponents();
     }
 
-
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
     @SuppressWarnings("unchecked")
-    
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        optionsLabel = new javax.swing.JLabel();
+        optionslabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        optionsList = new javax.swing.JList();
-        //jScrollPane2 = new javax.swing.JScrollPane();
-        overviewList = new javax.swing.JList();
-        confirmButton = new javax.swing.JButton();
+        optionslist = new javax.swing.JList();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        overviewlist = new javax.swing.JList();
+        confirmbutton = new javax.swing.JButton();
         load = new javax.swing.JButton();
         save = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        playerList = new javax.swing.JList();
+        playerlist = new javax.swing.JList();
         jScrollPane4 = new javax.swing.JScrollPane();
-        enemyList = new javax.swing.JList();
+        enemylist = new javax.swing.JList();
         jScrollPane5 = new javax.swing.JScrollPane();
         list = new javax.swing.JList();
         label = new javax.swing.JLabel();
-        useMagicLabel = new javax.swing.JLabel();
+        usemagiclabel = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        useMagicList = new javax.swing.JList();
+        usemagiclist = new javax.swing.JList();
         use = new javax.swing.JButton();
-
+        
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(500, 500));
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
+        list.setVisible(false);
+        usemagiclist.setVisible(false);
+      //  playerlist.setVisible(false);
+        use.setVisible(false);
+        //enemylist.setVisible(false);
+        label.setVisible(false);     
+
+        model = new DefaultListModel();
+        playermodel = new DefaultListModel();
+        systemmodel = new DefaultListModel();
+        optionsmodel = new DefaultListModel();
+        listmodel = new DefaultListModel();
+        overviewlist.setModel(model);
+        optionslist.setModel(optionsmodel);
+        
 
         jLabel1.setText("Player Progress");
 
@@ -192,21 +111,20 @@ public class TextAdventureGUI extends javax.swing.JFrame {
 
         jLabel3.setText("Overview");
 
-        optionsLabel.setText("Player Options");
+        optionslabel.setText("Player Options");
 
-        jScrollPane1.setViewportView(optionsList);
+        jScrollPane1.setViewportView(optionslist);
 
-        jScrollPane2.setViewportView(overviewList);
+        jScrollPane2.setViewportView(overviewlist);
 
-        confirmButton.setText("Confirm");
-        
-        
-        confirmButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                confirmButtonActionPerformed(evt);
-            }
-        });
-
+        confirmbutton.setText("Confirm");
+       
+   	 confirmbutton.addActionListener(new java.awt.event.ActionListener() {
+         public void actionPerformed(java.awt.event.ActionEvent evt) {
+             confirmbuttonActionPerformed(evt);
+        }
+      });
+       
         load.setText("Load");
         load.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -221,17 +139,17 @@ public class TextAdventureGUI extends javax.swing.JFrame {
             }
         });
 
-        jScrollPane3.setViewportView(playerList);
+        jScrollPane3.setViewportView(playerlist);
 
-        jScrollPane4.setViewportView(enemyList);
+        jScrollPane4.setViewportView(enemylist);
 
         jScrollPane5.setViewportView(list);
 
         label.setText("Use Item");
 
-        useMagicLabel.setText("UseMagic");
+        usemagiclabel.setText("UseMagic");
 
-        jScrollPane6.setViewportView(useMagicList);
+        jScrollPane6.setViewportView(usemagiclist);
 
         use.setText("Use");
         use.addActionListener(new java.awt.event.ActionListener() {
@@ -254,10 +172,10 @@ public class TextAdventureGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(260, 260, 260)
-                        .addComponent(confirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(confirmbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(260, 260, 260)
-                        .addComponent(optionsLabel))
+                        .addComponent(optionslabel))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(188, 188, 188)
@@ -265,11 +183,11 @@ public class TextAdventureGUI extends javax.swing.JFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(260, 260, 260)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(useMagicLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(usemagiclabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(label, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -291,10 +209,10 @@ public class TextAdventureGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(339, 339, 339)
-                        .addComponent(confirmButton))
+                        .addComponent(confirmbutton))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(159, 159, 159)
-                        .addComponent(optionsLabel))
+                        .addComponent(optionslabel))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
@@ -309,7 +227,7 @@ public class TextAdventureGUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(159, 159, 159)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(useMagicLabel)
+                            .addComponent(usemagiclabel)
                             .addComponent(label))
                         .addGap(6, 6, 6)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -324,31 +242,34 @@ public class TextAdventureGUI extends javax.swing.JFrame {
         );
 
         pack();
-    }
+    }// </editor-fold>//GEN-END:initComponents
 
-    private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {
-
-        int option = optionsList.getSelectedIndex();
+    private void confirmbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmbuttonActionPerformed
+if(gameMode.equals("fight") ){
+        int option = optionslist.getSelectedIndex();
         if (option == 0) {
             System.out.println("Attack");
             model.addElement("Player Chooses to attack");
             Random n = new Random();
             int attack = n.nextInt(20);
             int intelligence = player.getIntl();
-            int enemyDex = enemy.getDex();
+            int enemyDex = system.getDex();
             if ((attack + intelligence) > enemyDex) {
                 model.addElement("Attack done successfully");
                 model.addElement("Player has made a damage to Enemy");
                 attack(weapon);
             }
 
-            if (enemy.getCon() > 0) {
+            if (system.getCon() > 0) {
                 SystemTurn();
             } else {
                 model.addElement("Player Wins");
-                optionsLabel.setVisible(false);
-                optionsList.setVisible(false);
-                confirmButton.setVisible(false);
+                 
+                playermodel.clear();
+                systemmodel.clear();
+                gameMode = "story";
+                initScene(scenesMap.get(currenBatleScene.getVictory()));
+                
             }
         } else if (option == 1) {
             System.out.println("Use Magic");
@@ -366,10 +287,15 @@ public class TextAdventureGUI extends javax.swing.JFrame {
 
             Flee();
         }
+}else
+{
+	   Choice choice = (Choice) optionslist.getSelectedValue();
+       Scene outCome = scenesMap.get(choice.getOutSceneId());
+     if (outCome != null) {
+          initScene(outCome);}}
+    }//GEN-LAST:event_confirmbuttonActionPerformed
 
-
-    }
-
+    
     void attack(String weapon) {
 
         if (weapon.equals("default")) {
@@ -381,43 +307,43 @@ public class TextAdventureGUI extends javax.swing.JFrame {
             
             weaponHealth -=10;
             
-            enemy.setDex(enemy.getDex() - 4);
-            enemy.setHP(enemy.getHP() - 20);
+            system.setDex(system.getDex() - 4);
+            system.setCon(system.getCon() - 20);
         } else if (weapon.contains("Magic")) {
-            enemy.setHP(enemy.getHP() - magicEffect);
+            system.setCon(system.getCon() - magicEffect);
         } 
         setModels();
 
     }
 
     void useMagic() {
-        listModel.removeAllElements();
+        listmodel.removeAllElements();
         current = "Item";
         use.setVisible(true);
         label.setVisible(false);
         list.setVisible(true);
-        useMagicLabel.setVisible(true);
+        usemagiclabel.setVisible(true);
         current = "Magic";
 
         System.out.println(current);
 
         for (String s : player.magic.keySet()) {
             System.out.println(s);
-            listModel.addElement(s);
+            listmodel.addElement(s);
         }
 
     }
 
     void useItem() {
-        listModel.removeAllElements();
+        listmodel.removeAllElements();
         current = "Item";
         use.setVisible(true);
         label.setVisible(true);
         list.setVisible(true);
-        useMagicLabel.setVisible(false);
+        usemagiclabel.setVisible(false);
 
         for (String s : player.items.keySet()) {
-            listModel.addElement(s);
+            listmodel.addElement(s);
         }
     }
 
@@ -425,43 +351,139 @@ public class TextAdventureGUI extends javax.swing.JFrame {
         FleeForm f = new FleeForm();
         f.setVisible(true);
     }
+    
+    public void initScene(Scene scene) {
+      if (scene == null)System.out.println(currenBatleScene.getVictory());
+      if (scene == null)System.out.println(scenesMap.get(currenBatleScene.getVictory()));
+        if( scene.getType() != null && scene.getType().equals("combat")){
+        	  model.addElement(scene.getDescription());  
+        	  gameMode="fight";  
+        	  optionsmodel.clear();
+        	  //System.out.println(scene);
+        	  currenBatleScene = scene;      	 
+    	       formWindowOpened();
+        	  } else{
+        		  model.addElement(scene.getDescription());
+                   // txtpn.setCaretPosition(0);  
+                  optionsmodel.clear();
+                  for (Choice choice : scene.getChoices()) 
+                 	optionsmodel.addElement(choice);
+       
+        	  }
+    }
+    
+    
+    
+    private Scene buildScene(Element sceneElement) {
+        Scene scene = null;
+        String id = sceneElement.getAttributeValue("id");
+        String type = sceneElement.getAttributeValue("type");
+        if (id != null &&(  type == null||(type != null &&!type.equals("combat")))) {
+            String sceneDescription = sceneElement.getChild("SceneDescription").getText();
+            scene = new Scene(id, sceneDescription, type);                     
+            List<Element> sceneChildren = sceneElement.getChildren();
+            for (Element element : sceneChildren) {
+                if (element.getName().equals("choice")) {
+                    scene.getChoices().add(this.buildChoice(element));
+                }
+            }
+        }
+         else  {
+        	   String sceneDescription = sceneElement.getChild("SceneDescription").getText();
+               scene = new Scene(id, sceneDescription, type);           
+               String sceneVictory = sceneElement.getChild("Victory").getText().trim();
+               String sceneRunVictory = sceneElement.getChild("RunVictory").getText().trim();
+               String sceneDefeat = sceneElement.getChild("Defeat").getText().trim();
+               String sceneRunDefeat = sceneElement.getChild("RunDefeat").getText().trim();
+             
+               scene.setVictory(sceneVictory);
+               scene.setRunVictory(sceneRunVictory);
+               scene.setDefeat(sceneDefeat);
+               scene.setRunDefeat(sceneRunDefeat);
+           
+             List<Element> sceneChildren = sceneElement.getChildren();
+             for (Element element : sceneChildren) {
+                 if (element.getName().equals("enemy")) {
+                     scene.getCharacters().add(this.buildCharacter(element));
+                 }
+             }
+        }
+      
+        return scene;
+    }
+    
+    
+    private Choice buildChoice(Element choiceElement) {
+        Choice choice = null;
+        String id = choiceElement.getAttributeValue("no");
+        if (null != id) {
+            choice = new Choice();
+            choice.setId(id);
+            choice.setDescription(choiceElement.getChildText("choiceDescription"));
+            choice.setOutSceneId(choiceElement.getChildText("outcome"));
+        }
+        return choice;
+    }
+    
+    private Character buildCharacter(Element charElement) {
+    	Character npc = null;
+    	String id = charElement.getAttributeValue("id"); 
+    	if (id != null)
+    	{
+    		npc = new Character();
+    		npc.setId(Integer.parseInt(id));
+    		npc.setCon(Integer.parseInt(charElement.getAttributeValue("con")));
+    		npc.setStr(Integer.parseInt(charElement.getAttributeValue("str")));
+    		npc.setDex(Integer.parseInt(charElement.getAttributeValue("dex")));
+    		npc.setIntl(Integer.parseInt(charElement.getAttributeValue("intl")));
+    		npc.setFth(Integer.parseInt(charElement.getAttributeValue("fth")));
+    		npc.setChr(Integer.parseInt(charElement.getAttributeValue("chr")));
+    		//npc.Stats(npc);
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {
-        
-        useMagicLabel.setVisible(false);
-        label.setVisible(false);
-        list.setVisible(false);
-        useMagicList.setVisible(true);
-        use.setVisible(false);
+    	}
+    	return npc;
+    }
+    
+    
+    
+    
+
+    private void formWindowOpened() {//GEN-FIRST:event_formWindowOpened
+    
+       usemagiclabel.setVisible(false);
+       label.setVisible(false);
+       list.setVisible(false);
+        usemagiclist.setVisible(true);
+        //use.setVisible(false);
 
         player = new Character();
-        enemy = new Character();
+        system = new Character();
 
-        optionsLabel.setVisible(false);
-        optionsList.setVisible(false);
-        confirmButton.setVisible(false);
+         optionslabel.setVisible(false);
+        optionslist.setVisible(false);
+        confirmbutton.setVisible(false);
 
-        model = new DefaultListModel();
-        playerModel = new DefaultListModel();
-        enemyModel = new DefaultListModel();
-        optionsModel = new DefaultListModel();
-        listModel = new DefaultListModel();
+     
+        playermodel = new DefaultListModel();
+        systemmodel = new DefaultListModel();
+     
+        listmodel = new DefaultListModel();
 
-        playerList.setModel(playerModel);
-        enemyList.setModel(enemyModel);
-        overviewList.setModel(model);
-        optionsList.setModel(optionsModel);
-        list.setModel(listModel);
+        playerlist.setModel(playermodel);
+        enemylist.setModel(systemmodel);
+        overviewlist.setModel(model);
+        optionslist.setModel(optionsmodel);
+        list.setModel(listmodel);
 
-        optionsModel.addElement("Attack");
-        optionsModel.addElement("Use Magic");
-        optionsModel.addElement("Use Item");
-        optionsModel.addElement("Flee");
+        optionsmodel.addElement("Attack");
+        optionsmodel.addElement("Use Magic");
+        optionsmodel.addElement("Use Item");
+        optionsmodel.addElement("Flee");
 
         setInitials();
 
         int pseed = player.roll(100) + player.getDex();
-        int sseed = enemy.roll(100) + enemy.getDex();
+        int sseed = system.roll(100) + system.getDex();
         System.out.println(pseed);
         model.addElement("Players Rolling");
         int p = 0;
@@ -486,61 +508,66 @@ public class TextAdventureGUI extends javax.swing.JFrame {
         }
 
         if (p == 1) {
-            optionsLabel.setVisible(true);
-            optionsList.setVisible(true);
-            confirmButton.setVisible(true);
+            optionslabel.setVisible(true);
+            optionslist.setVisible(true);
+            confirmbutton.setVisible(true);
         } else {
             SystemTurn();
         }
 
 
-    }
+    }//GEN-LAST:event_formWindowOpened
 
     void SystemTurn() {
-        optionsLabel.setVisible(true);
-        optionsList.setVisible(true);
-        confirmButton.setVisible(true);
-        if (enemy.getCon() > 0) {
-            int r = enemy.roll(100);
-            double flee = player.getChr() / (enemy.getCon() * 2);
+        optionslabel.setVisible(true);
+        optionslist.setVisible(true);
+        confirmbutton.setVisible(true);
+        if (system.getCon() > 0) {
+            int r = system.roll(100);
+            double flee = player.getChr() / (system.getCon() * 2);
             if (r < flee) {
-                model.addElement("Enemy choses to Flee");
-                int c = enemy.roll(3);
+                model.addElement("Enemy is Desperate");
+                int c = system.roll(3);
                 if (c == 1) {
-                    System.exit(1);
+                model.addElement("Enemy Flees");
+                gameMode = "story";
+                playermodel.clear();
+                systemmodel.clear();
+                initScene(scenesMap.get(currenBatleScene.getRunVictory()));
+                    //System.exit(1);
                 } else if (c == 2) {
                     int temp = 0;
                     String magic = "";
                     int magicPower = 0;
-                    for (String s : enemy.magic.keySet()) {
-                        temp += enemy.magic.get(s);
+                    for (String s : system.magic.keySet()) {
+                        temp += system.magic.get(s);
                         magic = s;
-                        magicPower = enemy.magic.get(s);
+                        magicPower = system.magic.get(s);
                     }
                     if (r < temp) {
                         model.addElement("System used Spell " + magic);
-                        enemy.setCon(enemy.getCon() - magicPower);
+                        system.setCon(system.getCon() - magicPower);
                     }
                 } else {
                     String w = "";
                     int wh = 0;
-                    for (String s : enemy.items.keySet()) {
+                    for (String s : system.items.keySet()) {
                         w = s;
-                        wh = enemy.items.get(s);
+                        wh = system.items.get(s);
                     }
                     model.addElement("System switching weapon " + w);
-                    enemy.items.put(sweapon, shealth);
+                    system.items.put(sweapon, shealth);
                     sweapon = w;
-                    shealth = enemy.items.get(w);
-                    enemy.items.remove(w);
+                    shealth = system.items.get(w);
+                    system.items.remove(w);
                 }
             } else {
                 model.addElement("Enemy Attacks");
-                enemy.setStr(enemy.getStr() + 5);
-                enemy.setDex(enemy.getDex() + 5);
-                enemy.setIntl(enemy.getIntl() + 5);
-                enemy.setFth(enemy.getFth() + 5);
-                enemy.setStr(enemy.getStr() - 4);
+                system.setStr(system.getStr() + 5);
+                system.setDex(system.getDex() + 5);
+                system.setIntl(system.getIntl() + 5);
+                system.setFth(system.getFth() + 5);
+                system.setStr(system.getStr() - 4);
                 shealth -= 10;
                 
                 player.setDex(player.getDex() - 4);
@@ -552,29 +579,38 @@ public class TextAdventureGUI extends javax.swing.JFrame {
 
             if (player.getCon() <= 0) {
                 model.addElement("Enemy Wins.");
-                optionsLabel.setVisible(false);
-                optionsList.setVisible(false);
-                confirmButton.setVisible(false);
+                
+                optionslabel.setVisible(false);
+                optionslist.setVisible(false);
+                confirmbutton.setVisible(false);
+                gameMode = "story";
+                playermodel.clear();
+                systemmodel.clear();
+                initScene(scenesMap.get(currenBatleScene.getDefeat()));
             }
         } else {
             model.addElement("Player Wins.");
+            gameMode = "story";
+            playermodel.clear();
+            systemmodel.clear();
+            initScene(scenesMap.get(currenBatleScene.getVictory()));
         }
     }
 
-    private void useActionPerformed(java.awt.event.ActionEvent evt) {
+    private void useActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_useActionPerformed
 
         if (current.equals("Magic")) {
             int index = list.getSelectedIndex();
-            String magic = listModel.get(index).toString();
+            String magic = listmodel.get(index).toString();
             model.addElement("Player used magic " + magic);
             magicEffect = player.magic.get(magic);
             player.magic.remove(magic);
-            useMagicLabel.setVisible(false);
+            usemagiclabel.setVisible(false);
             attack("Magic=" + magic);
             SystemTurn();
         } else {
             int index = list.getSelectedIndex();
-            String item = listModel.get(index).toString();
+            String item = listmodel.get(index).toString();
             model.addElement("Player Switched weapon to " + item);
 
             player.items.put(weapon, weaponHealth);
@@ -594,6 +630,8 @@ public class TextAdventureGUI extends javax.swing.JFrame {
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter("Playerfile.txt"));
             
+            bw.write(currenBatleScene.getId());
+            bw.newLine();
             bw.write(weapon);
             bw.newLine();
             bw.write(String.valueOf(weaponHealth));
@@ -629,34 +667,35 @@ public class TextAdventureGUI extends javax.swing.JFrame {
             
             bw = new BufferedWriter(new FileWriter("Systemfile.txt"));
             
+     
             bw.write(sweapon);
             bw.newLine();
             bw.write(String.valueOf(shealth));
             bw.newLine();
-            bw.write(String.valueOf(enemy.getChr()));
+            bw.write(String.valueOf(system.getChr()));
             bw.newLine();
-            bw.write(String.valueOf(enemy.getCon()));
+            bw.write(String.valueOf(system.getCon()));
             bw.newLine();
-            bw.write(String.valueOf(enemy.getDex()));
+            bw.write(String.valueOf(system.getDex()));
             bw.newLine();
-            bw.write(String.valueOf(enemy.getFth()));
+            bw.write(String.valueOf(system.getFth()));
             bw.newLine();
-            bw.write(String.valueOf(enemy.getId()));
+            bw.write(String.valueOf(system.getId()));
             bw.newLine();
-            bw.write(String.valueOf(enemy.getIntl()));
+            bw.write(String.valueOf(system.getIntl()));
             bw.newLine();
-            bw.write(String.valueOf(enemy.getStr()));
+            bw.write(String.valueOf(system.getStr()));
             
-            for(String s:enemy.items.keySet())
+            for(String s:system.items.keySet())
             {
                 bw.newLine();
-                bw.write(s+" "+ enemy.items.get(s));
+                bw.write(s+" "+ system.items.get(s));
             }
             
-            for(String s:enemy.magic.keySet())
+            for(String s:system.magic.keySet())
             {
                 bw.newLine();
-                bw.write(s+" "+ enemy.magic.get(s));
+                bw.write(s+" "+ system.magic.get(s));
             }
             bw.close();
         } catch (IOException ex) {
@@ -664,20 +703,20 @@ public class TextAdventureGUI extends javax.swing.JFrame {
         }
         
         
-    }
+    }//GEN-LAST:event_saveActionPerformed
 
     void removeAllpreviousElements()
     {
         player.clearMaps();
-        enemy.clearMaps();
+        system.clearMaps();
     }
     
     
-    private void loadActionPerformed(java.awt.event.ActionEvent evt) {
+    private void loadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadActionPerformed
 
-
+//        removeAllpreviousElements();
         try {
-            BufferedReader br = new BufferedReader(new FileReader("input"));
+            BufferedReader br = new BufferedReader(new FileReader("Playerfile.txt"));
             
             weapon = br.readLine();
             weaponHealth = Integer.parseInt(br.readLine());
@@ -713,13 +752,13 @@ public class TextAdventureGUI extends javax.swing.JFrame {
             
             sweapon = br.readLine();
             shealth = Integer.parseInt(br.readLine());
-            enemy.setChr(Integer.parseInt(br.readLine()));
-            enemy.setCon(Integer.parseInt(br.readLine()));
-            enemy.setDex(Integer.parseInt(br.readLine()));
-            enemy.setFth(Integer.parseInt(br.readLine()));
-            enemy.setId(Integer.parseInt(br.readLine()));
-            enemy.setIntl(Integer.parseInt(br.readLine()));
-            enemy.setStr(Integer.parseInt(br.readLine()));
+            system.setChr(Integer.parseInt(br.readLine()));
+            system.setCon(Integer.parseInt(br.readLine()));
+            system.setDex(Integer.parseInt(br.readLine()));
+            system.setFth(Integer.parseInt(br.readLine()));
+            system.setId(Integer.parseInt(br.readLine()));
+            system.setIntl(Integer.parseInt(br.readLine()));
+            system.setStr(Integer.parseInt(br.readLine()));
         
             item = br.readLine();
             magic = br.readLine();
@@ -731,13 +770,13 @@ public class TextAdventureGUI extends javax.swing.JFrame {
             for(int i=1; i<items1.length; i++)
             {
                 String[] values = items1[i].split(" ");
-                enemy.items.put(values[0], Integer.parseInt(values[0]));
+                system.items.put(values[0], Integer.parseInt(values[0]));
             }
             
             for(int i=1; i<magics1.length; i++)
             {
                 String[] values = magics1[i].split(" ");
-                enemy.magic.put(values[0], Integer.parseInt(values[0]));
+                system.magic.put(values[0], Integer.parseInt(values[0]));
             }
             br.close();
             
@@ -749,8 +788,20 @@ public class TextAdventureGUI extends javax.swing.JFrame {
             Logger.getLogger(TextAdventureGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+    }//GEN-LAST:event_loadActionPerformed
+   
+    //Scenes
+   
+    
+    
+    public Map<String, Scene> getScenesMap() {
+        return scenesMap;
     }
-
+    
+    
+    
+    
+    
     private void pause() throws InterruptedException {
         TimeUnit.SECONDS.sleep(1);
         SwingUtilities.invokeLater(new Runnable() {
@@ -771,98 +822,141 @@ public class TextAdventureGUI extends javax.swing.JFrame {
         player.setFth(50);
         player.items.put("Sword", 100);
         player.items.put("Mace", 100);
-        player.magic.put("Fire Ball", 35);
-        player.magic.put("Lightning Bolt", 40);
+        player.magic.put("Fire Ball", 45);
+        player.magic.put("lightning Bolt", 40);
 
-        enemy.setId(2);
-        enemy.setCon(100);
-        enemy.setChr(50);
-        enemy.setStr(20);
-        enemy.setDex(50);
-        enemy.setIntl(50);
-        enemy.setFth(50);
-        enemy.items.put("Axe", 100);
-        enemy.items.put("Bow", 100);
-        enemy.magic.put("Poison Mist", 35);
-        enemy.magic.put("Lightning Bolt", 40);
+        system.setId(2);
+        system.setCon(100);
+        system.setChr(50);
+        system.setStr(20);
+        system.setDex(50);
+        system.setIntl(50);
+        system.setFth(50);
+        system.items.put("Axe", 100);
+        system.items.put("Hammer", 100);
+        system.magic.put("Blood Rapture", 200);
+        system.magic.put("Helm Splitter", 60);
 
         setModels();
     }
 
     void setModels() {
 
-        playerModel.removeAllElements();
-        enemyModel.removeAllElements();
+        playermodel.removeAllElements();
+        systemmodel.removeAllElements();
 
-        playerModel.addElement("Weapon : " + weapon + ": " + weaponHealth);
-        //playerModel.addElement("Id : " + player.getId());
-        playerModel.addElement("HP : " + player.getHP());
-       // playerModel.addElement("Chr : " + player.getChr());
-        //playerModel.addElement("Str : " + player.getStr());
-        //playerModel.addElement("Dex : " + player.getDex());
-        //playerModel.addElement("Intl : " + player.getIntl());
-        //playerModel.addElement("Fth : " + player.getFth());
+        playermodel.addElement("Weapon : " + weapon + ": " + weaponHealth);
+        playermodel.addElement("Id : " + player.getId());
+        playermodel.addElement("Con : " + player.getCon());
+        playermodel.addElement("Chr : " + player.getChr());
+        playermodel.addElement("Str : " + player.getStr());
+        playermodel.addElement("Dex : " + player.getDex());
+        playermodel.addElement("Intl : " + player.getIntl());
+        playermodel.addElement("Fth : " + player.getFth());
 
-        enemyModel.addElement("Weapon : " + sweapon + ": " + shealth);
-        enemyModel.addElement("Id : " + enemy.getId());
-        enemyModel.addElement("HP : " + enemy.getHP());
-        //enemyModel.addElement("Chr : " + enemy.getChr());
-        //enemyModel.addElement("Str : " + enemy.getStr());
-        //enemyModel.addElement("Dex : " + enemy.getDex());
-        //enemyModel.addElement("Intl : " + enemy.getIntl());
-        //enemyModel.addElement("Fth : " + enemy.getFth());
+        systemmodel.addElement("Weapon : " + sweapon + ": " + shealth);
+        systemmodel.addElement("Id : " + system.getId());
+        systemmodel.addElement("Con : " + system.getCon());
+        systemmodel.addElement("Chr : " + system.getChr());
+        systemmodel.addElement("Str : " + system.getStr());
+        systemmodel.addElement("Dex : " + system.getDex());
+        systemmodel.addElement("Intl : " + system.getIntl());
+        systemmodel.addElement("Fth : " + system.getFth());
     }
 
     /**
      * @param args the command line arguments
      */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
 
-    
-        private Choice buildChoice(Element choiceElement) {
-        Choice choice = null;
-        String id = choiceElement.getAttributeValue("no");
-        if (null != id) {
-            choice = new Choice();
-            choice.setId(id);
-            choice.setDescription(choiceElement.getChildText("choiceDescription"));
-            choice.setOutSceneId(choiceElement.getChildText("outcome"));
-        }
-        return choice;
-    }
-        
-    public Map<String, Scene> getScenesMap() {
-        return scenesMap;
-    }
-    
-        
-private Scene buildScene(Element sceneElement) {
-        Scene scene = null;
-        String id = sceneElement.getAttributeValue("id");
-        String type = sceneElement.getAttributeValue("type");
-        if (id != null && type != "combat") {
-            String sceneDescription = sceneElement.getChild("SceneDescription").getText();
-            scene = new Scene(id, sceneDescription, type);
-            List<Element> sceneChildren = sceneElement.getChildren();
-            for (Element element : sceneChildren) {
-                if (element.getName().equals("choice")) {
-                    scene.getChoices().add(this.buildChoice(element));
                 }
             }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(TextAdventureGUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(TextAdventureGUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(TextAdventureGUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(TextAdventureGUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        
-        return scene;
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run()   {
+            	 TextAdventureGUI storyBoard = new TextAdventureGUI();
+            	try{
+            	  File inputFile = new File("1 Holding the Ice Fortress.txt");
+               	  SAXBuilder saxB = new SAXBuilder();
+                  Document doc;
+				  doc = saxB.build(inputFile);					                
+                  Element storyElement = doc.getRootElement();
+                  Scene firstScene = null;
+                  List<Element> scenesList = storyElement.getChildren();
+                  for (Element sceneElement : scenesList) {
+                      Scene scene = storyBoard.buildScene(sceneElement);
+                      storyBoard.getScenesMap().put(scene.getId(), scene);
+                      //storyBoard.buildCharacter(sceneElement);
+                      if (firstScene == null) {
+                          firstScene = scene;
+                      }
+                     // if (scene.getType() == "combat") {
+                      	
+                      //}
+                  }
+                
+                  storyBoard.initScene(firstScene);
+               
+                  storyBoard.setVisible(true);
+                  //save.writeObject(firstScene);
+                  //save.flush();
+            	}
+            	catch (Exception e) {
+                    e.printStackTrace();
+                }
+            	 System.out.println(storyBoard.scenesMap);
+            	 storyBoard.setVisible(true);
+            }
+        });
     }
 
-    public void initScene(Scene scene) {
-        //txtpn.setText(scene.getDescription());
-        //txtpn.setCaretPosition(0);
-        model.addElement(scene.getDescription());
-        model.clear();
-        for (Choice choice : scene.getChoices()) {
-            optionsModel.addElement(choice);
-        }
-    }
-
-
-
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton confirmbutton;
+    private javax.swing.JList enemylist;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JLabel label;
+    private javax.swing.JList list;
+    private javax.swing.JButton load;
+    private javax.swing.JLabel optionslabel;
+    private javax.swing.JList optionslist;
+    private javax.swing.JList overviewlist;
+    private javax.swing.JList playerlist;
+    private javax.swing.JButton save;
+    private javax.swing.JButton use;
+    private javax.swing.JLabel usemagiclabel;
+    private javax.swing.JList usemagiclist;
+    // End of variables declaration//GEN-END:variables
 }

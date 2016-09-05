@@ -1,0 +1,12 @@
+Scene17
+default
+100
+50
+80
+46
+50
+1
+50
+20
+Items,Mace 100,Sword 100
+Magic,lightning Bolt 40,Fire Ball 45

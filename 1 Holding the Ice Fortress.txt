@@ -1,0 +1,762 @@
+<?xml version = "1.0"?>
+<Story>
+
+	<Scene id = "Scene1">
+		<SceneDescription>. Awaking in the dark to the feel of a cold damp floor, you reach out in front of you, scrambling to find where you are.The rambling of another in this room breaks the silence as you stare off into the darkness of the room.Chuckling to them self, the voice speaks up toward you.
+		</SceneDescription>
+	
+		<choice no="1">
+			<choiceDescription> Continue.
+			</choiceDescription>
+			<outcome>Scene2</outcome>
+		</choice>
+
+	</Scene>
+
+	<Scene id = "Scene2">
+		<SceneDescription> "You! Pour soul that has awoken in the dark, what are you? some kind of Knight errant?"Ahh never mind then, what a wondrous event you are baring witness too. The fall of an age but the birth of a new"Unable to speak up your voice lets out a gargling groan toward the voice in the dark."Owww, lost your way in Descron have we (Player Name),well... Welcome to the Tabula Rasa....."Emanating a soft blue light ever so slightly you see a decrepit hand move closer to you."This is the hand of a life burdened to watch many wander these halls of despair, I ask you, take it and see the world righted."Reaching out towards his hand and grasping it you are lifted to your feet. The space around you still black and cold."I ask you what would be your profession child? What made you remembered throughout your days, what made you loved... hated..."The hand grasping yours pulls downward to a set of weapons, dimly lit by the same blue light.
+		</SceneDescription>
+		
+		<choice no="1">
+			<choiceDescription> The Sword &amp; Shield 
+			</choiceDescription>
+			<outcome>Scene3</outcome>
+		</choice>
+
+		<choice no="2">
+			<choiceDescription> The Mace &amp; Crest
+			</choiceDescription>
+			<outcome>Scene4</outcome>
+		</choice>
+
+		<choice no="3">
+			<choiceDescription> Wooden Staff
+			</choiceDescription>
+			<outcome>Scene5</outcome>
+		</choice>
+
+		<choice no="4">
+			<choiceDescription> Duel Daggers
+			</choiceDescription>
+			<outcome>Scene6</outcome>
+		</choice>
+
+
+	</Scene>
+	
+	<Scene id = "Scene3">
+		<SceneDescription> "The Honorable Knight, Surely you guest, Follow me young soul"
+		</SceneDescription>
+		
+		<choice no="1">
+			<choiceDescription> Continue.
+			</choiceDescription>
+			<outcome>Scene7</outcome>
+		</choice>
+		
+	</Scene>
+	
+	<Scene id = "Scene4"> 
+		<SceneDescription> "The Mighty Cleric, bound by the righteous word of the gods"
+		</SceneDescription> 
+
+		<choice no="1">
+			<choiceDescription> Continue.
+			</choiceDescription>
+			<outcome>Scene7</outcome>
+		</choice>
+	</Scene>
+	
+	<Scene id = "Scene5">
+		<SceneDescription> "Mage? never figured you for one with the ability. Who can tell?"
+		</SceneDescription>
+			
+		<choice no="1">
+			<choiceDescription> Continue. 
+			</choiceDescription>
+			<outcome>Scene7</outcome>
+		</choice>
+
+	</Scene>
+
+	<Scene id = "Scene6">
+		<SceneDescription> "One to stick to the shadows, a loner, gone from sight." 
+		</SceneDescription>
+			
+		<choice no="1">
+			<choiceDescription> Continue. 
+			</choiceDescription>
+			<outcome>Scene7</outcome>
+		</choice>
+
+	</Scene>
+
+	<Scene id = "Scene7">
+		<SceneDescription> The old hermit laughs to himself and then coughs. 
+		</SceneDescription>
+			
+		<choice no="1">
+			<choiceDescription> Continue. 
+			</choiceDescription>
+			<outcome>Scene8</outcome>
+		</choice>
+
+	</Scene>
+
+	<Scene id = "Scene8">
+		<SceneDescription>  "Its not often that I do this young soul, but a new age must start with a new hero" "Pulling you along now the hand wont let go, picking up speed as you feel cold air rush pass by at an alarming rate. You begin to realize that you are not being pulled forward, yet falling into the darkness.
+		</SceneDescription>
+			
+		<choice no="1">
+			<choiceDescription> Continue. 
+			</choiceDescription>
+			<outcome>Scene9</outcome>
+		</choice>
+
+	</Scene>
+
+	<Scene id = "Scene9">
+		<SceneDescription> Waking to muffled sound of screams and clashes of swords, small beams of light illuminate the bodies around you... Mistaken for dead you must have been placed with the others. A sore head and cold mud around you, you can hear the voices of others around "Where is the captain?!"  
+		</SceneDescription>
+	
+		<choice no="1">
+			<choiceDescription> Get up.
+			</choiceDescription>
+			<outcome>Scene10</outcome>
+		</choice>
+	
+		<choice no="2">
+			<choiceDescription> Lay amongst the bodies, they could be enemies. 
+			</choiceDescription>
+			<outcome>Scene11</outcome>
+		</choice>
+		
+		<choice no="3">
+			<choiceDescription> Soak in the Vibe of being around bodies - Its the little things in life. 
+			</choiceDescription>
+			<outcome>Scene10</outcome>
+		</choice>
+		
+	</Scene>
+
+	<Scene id = "Scene10">
+		<SceneDescription> Lifted from the pile of bodies you see familiar faces of soldiers you know. You see a woman, you can only remember her name "Abelle" she is quick to dust you off and salute. "Sir we have an issue with the lines, they are faultering under the Barbarian attacks, they are strong and sustained." She hands you your sword. Looking at the battlefild you can tell the situation is only getting worse. "Sir, the reinforcments havent arrived and Im glad you are ok, we could use a plan." 
+		</SceneDescription>
+		
+		<choice no="1">
+			<choiceDescription> We need to pull back, we can consolidate our forces in the castle and maybe hold out a little longer. 
+			</choiceDescription>
+			<outcome>Scene13</outcome>
+		</choice>
+		
+		<choice no="2">
+			<choiceDescription> We need to regroup near the castle now, get what men you can and we will hold there.
+			</choiceDescription>
+			<outcome>Scene14</outcome>
+		</choice>
+
+		<choice no="3">
+			<choiceDescription> I think you and I can turn the tides of this, Lets reinforce the front line. 
+			</choiceDescription>
+			<outcome>Scene15</outcome>
+		</choice>
+
+		<choice no="2">
+			<choiceDescription> Sound the retreat, we cannot hold the lines. 
+			</choiceDescription>
+			<outcome>Scene16</outcome>
+		</choice>
+		 
+	</Scene>
+	
+	<Scene id = "Scene11">
+		<SceneDescription> You hear some people rush past, their voices are muffled from the battle and bodies around you. 
+		</SceneDescription>
+		
+		<choice no="1">
+			<choiceDescription> Raise an arm out of the bodies. 
+			</choiceDescription>
+			<outcome>Scene10</outcome>
+		</choice>
+		
+		<choice no="2">
+			<choiceDescription> Continue to lay down. 
+			</choiceDescription>
+			<outcome>Scene12</outcome>
+		</choice>
+		
+	</Scene>
+	
+	<Scene id = "Scene13">
+		<SceneDescription> Abelle nods and gestures toward the rally point beyond spiked barricades "All men toward the castle, move it!" as you all make your wy toward the castle you notice many men wounded and dead from the continuous battle. You step toward a barricade made from wooden spikes and a man grabs a hold of your arm. He begs while coughing blood "Please, help me captain! Help me please" 
+		</SceneDescription> 
+
+		<choice no="1">
+			<choiceDescription> Help him off the Spike, its the right thing to do. 
+			</choiceDescription>
+			<outcome>Scene21</outcome>
+		</choice>
+
+		<choice no="2">
+			<choiceDescription> He is done for, its time to help those that can carry themselves. 
+			</choiceDescription>
+			<outcome>Scene24</outcome>
+		</choice>
+	</Scene>
+	
+	<Scene id = "Scene14">
+		<SceneDescription> Running to the castle you can see many men wounded or dead that are being left behind, those that heard your command are racing back to the castle, still battling. As you make it to the castle the others that are with you take guard while you watch the remaining souldiers come forth and race in through the doors. Barbarians are still upon the soldiers in the forward fortifications. Abelle suggest "We should take possition here and help those that make it inside but we havent much time sir." 
+		</SceneDescription>
+			
+		<choice no="1">
+			<choiceDescription> We should try and help those close to us by fighting a few barbarians back away.
+			</choiceDescription>
+			<outcome>Scene17</outcome>
+		</choice>
+			
+		<choice no="2">
+			<choiceDescription> We need to speak with the commander, find out what our options are, lets head inside. These men can handle it. 
+			</choiceDescription>
+			<outcome>Scene22</outcome>
+		</choice>
+	</Scene>
+	
+	<Scene id = "Scene15">
+		<SceneDescription> There are many soldiers dead or wounded as you run toward the trenches many of them see you as you pass, some of them managing to get to their feet and charge after you. 
+		</SceneDescription>
+			
+		<choice no="1">
+			<choiceDescription> Charge to the trench and spiked fortification. 
+			</choiceDescription>
+			<outcome>Scene18</outcome>
+		</choice>
+	</Scene>
+
+	<Scene id = "Scene16">
+		<SceneDescription> A few of the men around you agree and begin to sound the retreat back to the castle, barbarians pour from fortifications killing the men wounded or not fast enough. You see a man trying to get out of the trenches but the part he is at is quite slippery and wet. 
+		</SceneDescription>
+			
+		<choice no="1">
+			<choiceDescription> Help the soldier out of the trench.
+			</choiceDescription>
+			<outcome>Scene19</outcome>
+		</choice>
+
+		<choice no="2">
+			<choiceDescription>  Leave soldier in the trench, you have to make it back to the castle before everyone dies. 
+			</choiceDescription>
+			<outcome>Scene20</outcome>
+		</choice>
+	</Scene>
+
+	<Scene id = "Scene19"> You help him out of the trench and he thanks you "Thank you for the help, I am Commander Tallenya, I am in your debt, lets head to the castle together."
+		<SceneDescription>  
+		</SceneDescription>
+			
+		<choice no="1">
+			<choiceDescription> Continue back to the castle.
+			</choiceDescription>
+			<outcome>Scene24</outcome>
+		</choice>
+	</Scene>
+
+	<Scene id = "Scene20">
+		<SceneDescription> Hearing the soldier yell outfor help but then subdued by attacking barbarians you run along, putting him to the back of your mind as you run with the rest of men. 
+		</SceneDescription>
+			
+		<choice no="1">
+			<choiceDescription> Continue to run to the castle. 
+			</choiceDescription>
+			<outcome>Scene24</outcome>
+		</choice>
+	</Scene>
+
+	<Scene id = "Scene23">
+		<SceneDescription> After defeating the barbarians in the trench you can hear the groans of a man just near you. "You there, Knight, thank you, If not ofr you I would have been done for." You can see a man with a wound to hi lower flank laying against the wall of the trench. "We should get out of here" he says to you as another man runs up to him and props him over his shoulder. 
+		</SceneDescription>
+
+		<choice no="1">
+			<choiceDescription> Help him up.  
+			</choiceDescription>
+			<outcome>Scene24</outcome>
+		</choice>
+	</Scene>
+
+	<Scene id = "Scene24">
+		<SceneDescription> The remaining soldiers make it back to the  castle entrance, the battlements are unceasing with the onslaught of magicand arrows that the ranged fighters can muster. The soldiers around you take their positions near thebroken gates and prepare for the barbarians to attack. "Sir, what are our options here? Lord Xzenge is inside, he is counting on us to hold this outer wall, but without those reinforcments." 
+		</SceneDescription>
+
+		<choice no="1">
+			<choiceDescription> Quickly, two soldiers take a horse and head out the other side of the castle, look for the reinforcements. 
+			</choiceDescription>
+			<outcome>Scene25</outcome>
+		</choice>
+
+		<choice no="2">
+			<choiceDescription> We need to hold these gates, they may be many in number but you are soldiers of the Xzenge Ice fortress.
+			</choiceDescription>
+			<outcome>Scene26</outcome>
+		</choice>
+	</Scene>
+
+	<Scene id = "Scene25">
+		<SceneDescription> two soldiers, run off to the stables and begin saddling up their horses. You, Abelle and five other soldiers are left to face the barbarian hordes. 
+		</SceneDescription>
+			
+		<choice no="1">
+			<choiceDescription> Ready your weapons.  
+			</choiceDescription>
+			<outcome>Scene28</outcome>
+		</choice>
+	</Scene>
+
+	<Scene id = "Scene26">
+		<SceneDescription> "All men prepare to face the barbarians here and now, we dig in until we get those soldiers here."
+		</SceneDescription>
+			
+		<choice no="1">
+			<choiceDescription> Continue. 
+			</choiceDescription>
+			<outcome>Scene27</outcome>
+		</choice>
+	</Scene>
+
+	<Scene id = "Scene29">
+		<SceneDescription> After defeating the group of barbarians that had followed your group back to the castle, you have a moment of breath. From behind you the doors swing open and a man emerges with vanguard soldiers around him. It is Lord Xzenge, he has come out to meet you. "Good work soldiers but I fear the worst is to come, We will have to face what is left of these barbarians until help arrives, together."  
+		</SceneDescription>
+			
+		<choice no="1">
+			<choiceDescription> "Sir, whats the situation on our troops" 
+			</choiceDescription>
+			<outcome>Scene30</outcome>
+		</choice>
+
+		<choice no="2">
+			<choiceDescription> "Im glad we have you here sir, we need to fall back into the castle, theres no time to lose." 
+			</choiceDescription>
+			<outcome>Scene31</outcome>
+		</choice>
+	</Scene>
+
+	<Scene id = "Scene30">
+		<SceneDescription> Placing a hand on your shoulder he takes a moment to look around at the battlefield. "I'm not going to lie to you soldier, but the outcome is grimm, if this attack from the Eastern Barbarians continues, the ice fortress will not be able to hold. On the other hand we have enough troops to last a siege for a few days inside.. provided they dont destroy our walls..." He looks over to Abelle and back to you.   
+		</SceneDescription>
+			
+		<choice no="1">
+			<choiceDescription> Im certain the soldiers that are our reinforcments will be here by the time that happens Lord Xzenge, Let us fight them here and now. 
+			</choiceDescription>
+			<outcome>Scene32</outcome>
+		</choice>
+
+		<choice no="2">
+			<choiceDescription> Let us take to inside Lord Xzenge, we can fight off against them better when we have a wall to our backs. 
+			</choiceDescription>
+			<outcome>Scene34</outcome>
+		</choice>
+	</Scene>
+
+	<Scene id = "Scene31">
+		<SceneDescription> He looks around the battlefield and gathers his thoughts while the war cry of barbarians and his own men can be heard from the trenches ahead. "Yes I believe we should take this inside, it might give us some time to formulate a plan beyond fighting it out. 
+		</SceneDescription>
+			
+		<choice no="1">
+			<choiceDescription> "Yes Sir." (Head into the castle)  
+			</choiceDescription>
+			<outcome>Scene34</outcome>
+		</choice>
+	</Scene>
+
+	<Scene id = "Scene34">
+		<SceneDescription> Heading back into the castle you can see more barbarians running toward the trenches in the distance. Upon entering the ice fortress you can see many of the men wounded or dead are laying on makeshift beds and stretchers. People are helping them through to the back of the castle where everyone will make their last stand. Abelle follows closely behind you "Sir, Do you think the other soldiers will make it in time?" 
+		</SceneDescription>
+			
+		<choice no="1">
+			<choiceDescription> "We are definitely going die Abelle"
+			</choiceDescription>
+			<outcome>Scene35</outcome>
+		</choice>
+
+		<choice no="2">
+			<choiceDescription> "As long as I live, every last one of those bastards will die." 
+			</choiceDescription>
+			<outcome>Scene35</outcome>
+		</choice>
+
+		<choice no="3">
+			<choiceDescription> "Abelle, if you get worried, stand behind me ok? Ill keep you safe." 
+			</choiceDescription>
+			<outcome>Scene36</outcome>
+		</choice>
+	</Scene>
+
+	<Scene id = "Scene35">
+		<SceneDescription> She continues to follow along, silent and breathing heavily.  
+		</SceneDescription>
+			
+		<choice no="1">
+			<choiceDescription> "Whatever happens Abelle, Im going to be here, Im not going to let anything happen to you" 
+			</choiceDescription>
+			<outcome>Scene37</outcome>
+		</choice>
+
+		<choice no="2">
+			<choiceDescription> "Steel yourself Abelle, these barbarians dont know what kind of warrior they are about to engage with." 
+			</choiceDescription>
+			<outcome>Scene37</outcome>
+		</choice>
+	</Scene>
+
+	<Scene id = "Scene36">
+		<SceneDescription> She giggles and places a hand on your back. "I just hope that you dont lay down on the battlefield and happen to be in a pile of bodies again." 
+		</SceneDescription>
+			
+		<choice no="1">
+			<choiceDescription> "Ill lay you down on the battlefield" 
+			</choiceDescription>
+			<outcome>Scene38</outcome>
+		</choice>
+
+		<choice no="2">
+			<choiceDescription> "No chance soldier, you look a little tired, 
+			</choiceDescription>
+			<outcome>Scene37</outcome>
+		</choice>
+	</Scene>
+
+	<Scene id = "Scene38">
+		<SceneDescription> Abelle takes her hand away "I well, um what? I mean" you can tell that response had caught her off guard.  
+		</SceneDescription>
+			
+		<choice no="1">
+			<choiceDescription> "Ha, easy now Abelle, Stay focused on the enemy."  
+			</choiceDescription>
+			<outcome>Scene37</outcome>
+		</choice>
+	</Scene>
+
+	<Scene id = "Scene37">
+		<SceneDescription> Getting to the main hall of the castle you are met by other soldiers that are moving furniture to create makeshift barricades. Many of the wounded are being taken upstairs, mages from the tops of the tower are running back down and warning the soldiers of the barbarians on the roof. 
+		</SceneDescription>
+			
+		<choice no="1">
+			<choiceDescription> "Lord Xzenge, there is trouble from the roof, by the looks of these mages theyre starting from the top." 
+			</choiceDescription>
+			<outcome>Scene39</outcome>
+		</choice>
+	</Scene>
+
+	<Scene id = "Scene39">
+		<SceneDescription> The Lord walks over to one of the tower mages that has been wounded, he kneels down and gives him a potion. "Tell me soldier, what is happening up there?" The soldier sits up slightly, proping himself on his elbows. "Sir, while you were outside, a few of them got to the roof, they climbed from a line attached from a ballista" Lord Xzenge nods and turns to look at you. "I need you up there, can you get rid of that rope line." 
+		</SceneDescription>
+			
+		<choice no="1">
+			<choiceDescription> "Abelle, I believe you should take a few men and go up there, I will be needed here incase the barbarians ge through the door."
+			</choiceDescription>
+			<outcome>Scene40</outcome>
+		</choice>
+
+		<choice no="2">
+			<choiceDescription> "I will sort this out Lord Xzenge, come get me if anyone begins to get through that door" 
+			</choiceDescription>
+			<outcome>Scene41</outcome>
+		</choice>
+	</Scene>
+
+	<Scene id = "Scene40">
+		<SceneDescription> Abelle nods to you and points at two men "You two with me, we are going up top, stay close and yell out if you get into trouble." She draws her sword back out and the three of them move up the stairs. Lord Xzenge asks you to head to the front door because the soldiers there will need you more than back here. 
+		</SceneDescription>
+			
+		<choice no="1">
+			<choiceDescription> Head to the front door. 
+			</choiceDescription>
+			<outcome>Scene42</outcome>
+		</choice>
+	</Scene>
+
+	<Scene id = "Scene41">
+		<SceneDescription> "Abelle, Stay here with the others, make sure that the front door doesnt faulter" She nods and takes two men to the front door, you then head upstairs alone. When getting to the roof you see a few mages left casting down toward the barbarians, some are dead and two others are being attacked by the barbarians that have climbed the rope. 
+		</SceneDescription>
+			
+		<choice no="1">
+			<choiceDescription> "Fight hard men! I will protect you!" 
+			</choiceDescription>
+			<outcome>Scene43</outcome>
+		</choice>
+	</Scene>
+
+	<Scene id = "Scene42">
+		<SceneDescription> You head down to the front door where the soldiers are baricading it to the best of their ability "Hold steady men, If they break through, Ill kill half, the rest kill the other half!" the door is then slammed against and nearly opens. 
+		</SceneDescription>
+			
+		<choice no="1">
+			<choiceDescription> Shoulder charge the door. 
+			</choiceDescription>
+			<outcome>Scene45</outcome>
+		</choice>
+
+		<choice no="2">
+			<choiceDescription> Draw your sword. 
+			</choiceDescription>
+			<outcome>Scene46</outcome>
+		</choice>
+	</Scene>
+
+	<Scene id = "Scene45">
+		<SceneDescription> You slam against the door hard, making it shut completely, you hear yelling and howls from the other side. "
+		</SceneDescription>
+			
+		<choice no="1">
+			<choiceDescription> Taunt the Barbarians.  
+			</choiceDescription>
+			<outcome>Scene47</outcome>
+		</choice>
+
+		<choice no="2">
+			<choiceDescription> Move back and draw your sword.  
+			</choiceDescription>
+			<outcome>Scene46</outcome>
+		</choice>
+	</Scene>
+
+	<Scene id = "Scene47">
+		<SceneDescription> Hearing the howling and yelling of the barbarians from the otherside of the door you feel compelled to yell "I'm going to kill every last one of the scum and drag your heads to Kalgulla" this is met with laughter and the other men looking at you in surprise. 
+		</SceneDescription>
+
+		<choice no="1">
+			<choiceDescription> Move back and draw your sword.  
+			</choiceDescription>
+			<outcome>Scene46</outcome>
+		</choice>
+
+		<choice no="2">
+			<choiceDescription> Continue to brace   
+			</choiceDescription>
+			<outcome>Scene48</outcome>
+		</choice>
+	</Scene>
+
+	<Scene id = "Scene48">
+		<SceneDescription> Holding the door with all your strength you feel something bash against the door and then laughter followed by the words "Haha! the cowards hide behind their doors! I will break them! I will crush them! For the glory of Kalgulla!" the door is then slammed open by an incredibly large man which send you and the other men back. 
+		</SceneDescription>
+
+		<choice no="1">
+			<choiceDescription> Fight the large barbarian.   
+			</choiceDescription>
+			<outcome>Scene49</outcome>
+		</choice>
+	</Scene>
+
+	<Scene id = "Scene46">
+		<SceneDescription> You and the other men move back to which a large barbarian smashes open the door and yells "I am here to send you too your meagre gods!" 
+		</SceneDescription>
+
+		<choice no="1">
+			<choiceDescription> Fight the large barbarian.   
+			</choiceDescription>
+			<outcome>Scene49</outcome>
+		</choice>
+	</Scene>
+
+	<Scene id = "Scene50">
+		<SceneDescription> The barbarian drops to his knees infront of you with his last strength he grabs a hold of you, squeezing you as hard as he can. "I may die Knight but im going to crush you to death first" he says while blood gushes down from his lips. The pain is almost unbarable but as he squeezes you place both your arms on his and force them open. "As long as there is people like you Barbarian... The might of Descrons soldiers will see you all dead!" You then place both hands on his head and breakhis neck. 
+		</SceneDescription>
+
+		<choice no="1">
+			<choiceDescription> Pick up your sword and shield, walk out to face the other barbarians.    
+			</choiceDescription>
+			<outcome>Scene51</outcome>
+		</choice>
+	</Scene>
+	<Scene id = "Scene51">
+		<SceneDescription> 
+		</SceneDescription>
+
+		<choice no="1">
+			<choiceDescription> 
+			</choiceDescription>
+			<outcome>Scene51</outcome>
+		</choice>
+	</Scene>
+
+	<Scene id = "Scene52">
+		<SceneDescription> Defeating the barbarian on the roof you lean over and cut the rope to the ballista shot. Looking back at the mages one asks "The Ice fortress is lost isnt sir, we cant hold out like this forever." You can see the fear in their eyes and worry over their faces. 
+		</SceneDescription>
+			
+		<choice no="1">
+			<choiceDescription> Instill courage.  
+			</choiceDescription>
+			<outcome>Scene53</outcome>
+		</choice>
+
+		<choice no="2">
+			<choiceDescription> Nod and walk back down stairs.   
+			</choiceDescription>
+			<outcome>Scene42</outcome>
+		</choice>
+	</Scene>
+
+	<Scene id = "Scene53">
+		<SceneDescription> Placing a hand on his shoulder you grin "We have lost so much, and so many, we have a choice now, to die or to send as many of them to Dogonath as possible. If you get scared, look for me, know that im going to do everything in my power to get us through this, but I need you do give them hell" You then head back downstairs into the main room and inform lord Xzenge of the cut rope. 
+		</SceneDescription>
+			
+		<choice no="1">
+			<choiceDescription> Continue.   
+			</choiceDescription>
+			<outcome>Scene54</outcome>
+		</choice>
+	</Scene>
+
+	<Scene id = "Scene54">
+		<SceneDescription> You head back down into the main hall with the rest of the soldiers, Lord Xzenge is informed of the situation "Alright knight, well done, however, I need you and Abelle to reinforce the front door, they are going to break through eventually" 
+		</SceneDescription>
+			
+		<choice no="1">
+			<choiceDescription> Continue.   
+			</choiceDescription>
+			<outcome>Scene42</outcome>
+		</choice>
+	</Scene>
+
+	<Scene id = "Scene21" type = "combat">
+		<Enemy id = "">
+			<con>70</con>
+			<str>21</str>
+			<dex>30</dex>
+			<intl>15</intl>
+			<fth>80</fth>
+			<chr>40</chr>
+		</Enemy>
+		<SceneDescription> Assulting Barbarian
+		</SceneDescription> 
+       <Victory>Scene24 </Victory>
+       <Defeat>Scene0 </Defeat>
+       <RunVictory>Scene24 </RunVictory>
+       <RunDefeat>Scene13 </RunDefeat>
+	</Scene>
+
+	<Scene id = "Scene17" type = "combat">
+		<Enemy id = "Assulting Barbarian">
+			<con>70</con>
+			<str>21</str>
+			<dex>30</dex>
+			<intl>15</intl>
+			<fth>80</fth>
+			<chr>40</chr>
+		</Enemy>
+		<SceneDescription> Protecting the others that head through the doors to the inners of the castle you are faced with fighting a barbarian berserker. 
+		</SceneDescription> 
+       <Victory>Scene22 </Victory>
+       <Defeat>Scene0 </Defeat>
+       <RunVictory>Scene22 </RunVictory>
+       <RunDefeat>Scene14 </RunDefeat>
+	</Scene>
+
+	<Scene id = "Scene18" type = "combat">
+		<Enemy id = "Assulting Barbarian">
+			<con>70</con>
+			<str>21</str>
+			<dex>30</dex>
+			<intl>15</intl>
+			<fth>80</fth>
+			<chr>40</chr>
+		</Enemy>
+		<SceneDescription> charging into the barbarian filled trenches you square off against a larger meaner looking one. 
+		</SceneDescription> 
+       <Victory>Scene23 </Victory>
+       <Defeat>Scene0 </Defeat>
+       <RunVictory>Scene23 </RunVictory>
+       <RunDefeat>Scene15 </RunDefeat>
+	</Scene>
+
+	<Scene id = "Scene28" type = "combat">
+		<Enemy id = "Assulting Barbarian">
+			<con>70</con>
+			<str>21</str>
+			<dex>30</dex>
+			<intl>15</intl>
+			<fth>80</fth>
+			<chr>40</chr>
+		</Enemy>
+		<SceneDescription> Assulting Barbarian
+		</SceneDescription> 
+       <Victory>Scene29 </Victory>
+       <Defeat>Scene0 </Defeat>
+       <RunVictory>Scene29 </RunVictory>
+       <RunDefeat>Scene25 </RunDefeat>
+	</Scene>
+
+	<Scene id = "Scene27" type = "combat">
+		<Enemy id = "Assulting Barbarian">
+			<con>70</con>
+			<str>21</str>
+			<dex>30</dex>
+			<intl>15</intl>
+			<fth>80</fth>
+			<chr>40</chr>
+		</Enemy>
+		<SceneDescription> Assulting Barbarian
+		</SceneDescription> 
+       <Victory>Scene29 </Victory>
+       <Defeat>Scene0 </Defeat>
+       <RunVictory>Scene29 </RunVictory>
+       <RunDefeat>Scene26 </RunDefeat>
+	</Scene>
+
+	<Scene id = "Scene32" type = "combat">
+		<Enemy id = "Assulting Barbarian">
+			<con>70</con>
+			<str>21</str>
+			<dex>30</dex>
+			<intl>15</intl>
+			<fth>80</fth>
+			<chr>40</chr>
+		</Enemy>
+		<SceneDescription> Assulting Barbarian
+		</SceneDescription> 
+       <Victory>Scene31 </Victory>
+       <Defeat>Scene0 </Defeat>
+       <RunVictory>Scene31 </RunVictory>
+       <RunDefeat>Scene30 </RunDefeat>
+	</Scene>
+
+	<Scene id = "Scene43" type = "combat">
+		<Enemy id = "Assulting Barbarian">
+			<con>70</con>
+			<str>21</str>
+			<dex>30</dex>
+			<intl>15</intl>
+			<fth>80</fth>
+			<chr>40</chr>
+		</Enemy>
+		<SceneDescription> Assulting Barbarian
+		</SceneDescription> 
+       <Victory>Scene52 </Victory>
+       <Defeat>Scene0 </Defeat>
+       <RunVictory>Scene52 </RunVictory>
+       <RunDefeat>Scene41 </RunDefeat>
+	</Scene>
+
+	<Scene id = "Scene49" type = "combat">
+		<Enemy id = "Barbarian Horde Master">
+			<con>90</con>
+			<str>25</str>
+			<dex>30</dex>
+			<intl>20</intl>
+			<fth>80</fth>
+			<chr>45</chr>
+		</Enemy>
+		<SceneDescription> Barbarian Horde Master
+		</SceneDescription> 
+       <Victory>Scene50 </Victory>
+       <Defeat>Scene0 </Defeat>
+       <RunVictory>Scene50 </RunVictory>
+       <RunDefeat>Scene48 </RunDefeat>
+	</Scene>
+
+	<Scene id = "Scene0"> 
+		<SceneDescription> Gone are the days of hero's past, his honor will stay with those he loves but when they die he will be but a name amongst many. - Lanfire Alexis Stanwood.
+		</SceneDescription>
+
+	</Scene>
+
+</Story>
