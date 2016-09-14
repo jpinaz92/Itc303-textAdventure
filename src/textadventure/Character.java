@@ -45,9 +45,9 @@ public class Character {
     	return con;
     }
     
-	public void setCon(int con) {
+    public void setCon(int con) {
 		this.con = con;
-	}
+    }
         
     public int getHP() {
         HP = con * 2;

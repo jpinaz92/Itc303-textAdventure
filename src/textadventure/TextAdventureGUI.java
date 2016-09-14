@@ -286,6 +286,7 @@ if(gameMode.equals("fight") ){
             model.addElement("Player Chooses to Flee");
 
             Flee();
+            System.out.println("Back in confirmbuttonActionPerformed");
         }
 }else
 {
@@ -348,8 +349,14 @@ if(gameMode.equals("fight") ){
     }
 
     void Flee() {
-        FleeForm f = new FleeForm();
+        FleeForm f = new FleeForm(this);
         f.setVisible(true);
+        System.out.println("Just set Flee form visible");
+    }
+    
+    void returnFromFlee() {
+        gameMode = "story";
+        initScene(scenesMap.get(currenBatleScene.getRunDefeat()));
     }
     
     public void initScene(Scene scene) {
@@ -459,7 +466,7 @@ if(gameMode.equals("fight") ){
         player = new Character();
         system = new Character();
 
-         optionslabel.setVisible(false);
+        optionslabel.setVisible(false);
         optionslist.setVisible(false);
         confirmbutton.setVisible(false);
 
@@ -630,7 +637,7 @@ if(gameMode.equals("fight") ){
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter("Playerfile.txt"));
             
-            bw.write(currenBatleScene.getId());
+            //bw.write(String.valueOf(currenBatleScene.getId()));
             bw.newLine();
             bw.write(weapon);
             bw.newLine();
@@ -821,19 +828,21 @@ if(gameMode.equals("fight") ){
         player.setIntl(50);
         player.setFth(50);
         player.items.put("Sword", 100);
-        player.items.put("Mace", 100);
+        player.items.put("Mace", 150);
         player.magic.put("Fire Ball", 45);
         player.magic.put("lightning Bolt", 40);
-
+        
+        
+        
         system.setId(2);
-        system.setCon(100);
-        system.setChr(50);
+        system.setCon(75);
+        system.setChr(20);
         system.setStr(20);
         system.setDex(50);
         system.setIntl(50);
         system.setFth(50);
         system.items.put("Axe", 100);
-        system.items.put("Hammer", 100);
+        system.items.put("Hammer", 150);
         system.magic.put("Blood Rapture", 200);
         system.magic.put("Helm Splitter", 60);
 
@@ -847,6 +856,7 @@ if(gameMode.equals("fight") ){
 
         playermodel.addElement("Weapon : " + weapon + ": " + weaponHealth);
         playermodel.addElement("Id : " + player.getId());
+        //playermodel.addElement("HP : " + player.getHP());
         playermodel.addElement("Con : " + player.getCon());
         playermodel.addElement("Chr : " + player.getChr());
         playermodel.addElement("Str : " + player.getStr());
@@ -856,6 +866,7 @@ if(gameMode.equals("fight") ){
 
         systemmodel.addElement("Weapon : " + sweapon + ": " + shealth);
         systemmodel.addElement("Id : " + system.getId());
+        //systemmodel.addElement("HP : " + system.getHP());
         systemmodel.addElement("Con : " + system.getCon());
         systemmodel.addElement("Chr : " + system.getChr());
         systemmodel.addElement("Str : " + system.getStr());
@@ -907,6 +918,7 @@ if(gameMode.equals("fight") ){
 				  doc = saxB.build(inputFile);					                
                   Element storyElement = doc.getRootElement();
                   Scene firstScene = null;
+                  
                   List<Element> scenesList = storyElement.getChildren();
                   for (Element sceneElement : scenesList) {
                       Scene scene = storyBoard.buildScene(sceneElement);

@@ -1,3 +1,5 @@
+package textadventure;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -10,7 +12,10 @@ public class Scene {
    private  String id;
    private String description;
    private String type;
-
+   private String victory;
+   private String defeat;
+   private String runVictory;
+   private String runDefeat;
     List<Choice> choices = new ArrayList<Choice>();
     List<Character> characters = new ArrayList<Character>();
     @Override
@@ -62,6 +67,40 @@ public class Scene {
     public String getType() {
     	return type;
     }
+    public String toString(){
+    	return description;
+    }
 
+	public String getVictory() {
+		return victory;
+	}
+
+	public void setVictory(String victory) {
+		this.victory = victory;
+	}
+
+	public String getDefeat() {
+		return defeat;
+	}
+
+	public void setDefeat(String defeat) {
+		this.defeat = defeat;
+	}
+        
+        public String getRunVictory() {
+            return runVictory;
+        }
+        
+        public void setRunVictory(String runVictory) {
+                this.runVictory = runVictory;
+	}
+        
+        public String getRunDefeat() {
+            return runDefeat;
+	}
+        
+        public void setRunDefeat(String runDefeat) {
+		this.runDefeat = runDefeat;
+	}
 
 }

@@ -665,7 +665,7 @@
        <Victory>Scene23 </Victory>
        <Defeat>Scene0 </Defeat>
        <RunVictory>Scene23 </RunVictory>
-       <RunDefeat>Scene15 </RunDefeat>
+       <RunDefeat>Scene10 </RunDefeat>
 	</Scene>
 
 	<Scene id = "Scene28" type = "combat">

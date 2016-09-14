@@ -4,8 +4,10 @@ package textadventure;
 
 public class FleeForm extends javax.swing.JFrame {
 
+    TextAdventureGUI gui;
 
-    public FleeForm() {
+    public FleeForm(TextAdventureGUI gui) {
+        this.gui = gui;
         initComponents();
     }
 
@@ -20,7 +22,7 @@ public class FleeForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); 
+        //jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); 
         jLabel1.setText("Are you Sure you want to run... ?");
 
         jButton1.setText("Yes");
@@ -70,8 +72,8 @@ public class FleeForm extends javax.swing.JFrame {
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-
-        System.exit(1);
+        this.setVisible(false);
+        gui.returnFromFlee();
     }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,7 +102,7 @@ public class FleeForm extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FleeForm().setVisible(true);
+                new FleeForm(null).setVisible(true);
             }
         });
     }
