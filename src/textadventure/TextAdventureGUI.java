@@ -637,7 +637,7 @@ if(gameMode.equals("fight") ){
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter("Playerfile.txt"));
             
-            //bw.write(String.valueOf(currenBatleScene.getId()));
+            bw.write(String.valueOf(currenBatleScene.getId()));
             bw.newLine();
             bw.write(weapon);
             bw.newLine();
@@ -725,6 +725,8 @@ if(gameMode.equals("fight") ){
         try {
             BufferedReader br = new BufferedReader(new FileReader("Playerfile.txt"));
             
+            currenBatleScene.setID(br.readLine());
+            initScene(currenBatleScene);
             weapon = br.readLine();
             weaponHealth = Integer.parseInt(br.readLine());
             player.setChr(Integer.parseInt(br.readLine()));
@@ -829,8 +831,8 @@ if(gameMode.equals("fight") ){
         player.setFth(50);
         player.items.put("Sword", 100);
         player.items.put("Mace", 150);
-        player.magic.put("Fire Ball", 45);
-        player.magic.put("lightning Bolt", 40);
+        player.magic.put("FireBall", 45);
+        player.magic.put("lightningBolt", 40);
         
         
         
@@ -843,8 +845,8 @@ if(gameMode.equals("fight") ){
         system.setFth(50);
         system.items.put("Axe", 100);
         system.items.put("Hammer", 150);
-        system.magic.put("Blood Rapture", 200);
-        system.magic.put("Helm Splitter", 60);
+        system.magic.put("BloodRapture", 200);
+        system.magic.put("HelmSplitter", 60);
 
         setModels();
     }
