@@ -217,7 +217,7 @@
 		<choice no="2">
 			<choiceDescription> We need to speak with the commander, find out what our options are, lets head inside. These men can handle it. 
 			</choiceDescription>
-			<outcome>Scene22</outcome>
+			<outcome>Scene34</outcome>
 		</choice>
 	</Scene>
 	
@@ -618,7 +618,7 @@
 	</Scene>
 
 	<Scene id = "Scene21" type = "combat">
-		<Enemy id = "">
+		<Enemy id = "2">
 			<con>70</con>
 			<str>21</str>
 			<dex>30</dex>
@@ -635,7 +635,7 @@
 	</Scene>
 
 	<Scene id = "Scene17" type = "combat">
-		<Enemy id = "Assulting Barbarian">
+		<Enemy id = "2">
 			<con>70</con>
 			<str>21</str>
 			<dex>30</dex>
@@ -645,14 +645,14 @@
 		</Enemy>
 		<SceneDescription> Protecting the others that head through the doors to the inners of the castle you are faced with fighting a barbarian berserker. 
 		</SceneDescription> 
-       <Victory>Scene22 </Victory>
+       <Victory>Scene34 </Victory>
        <Defeat>Scene0 </Defeat>
-       <RunVictory>Scene22 </RunVictory>
+       <RunVictory>Scene34 </RunVictory>
        <RunDefeat>Scene14 </RunDefeat>
 	</Scene>
 
 	<Scene id = "Scene18" type = "combat">
-		<Enemy id = "Assulting Barbarian">
+		<Enemy id = "2">
 			<con>70</con>
 			<str>21</str>
 			<dex>30</dex>
@@ -665,11 +665,11 @@
        <Victory>Scene23 </Victory>
        <Defeat>Scene0 </Defeat>
        <RunVictory>Scene23 </RunVictory>
-       <RunDefeat>Scene10 </RunDefeat>
+       <RunDefeat> Scene15 </RunDefeat>
 	</Scene>
 
 	<Scene id = "Scene28" type = "combat">
-		<Enemy id = "Assulting Barbarian">
+		<Enemy id = "2">
 			<con>70</con>
 			<str>21</str>
 			<dex>30</dex>
@@ -686,7 +686,7 @@
 	</Scene>
 
 	<Scene id = "Scene27" type = "combat">
-		<Enemy id = "Assulting Barbarian">
+		<Enemy id = "2">
 			<con>70</con>
 			<str>21</str>
 			<dex>30</dex>
@@ -703,7 +703,7 @@
 	</Scene>
 
 	<Scene id = "Scene32" type = "combat">
-		<Enemy id = "Assulting Barbarian">
+		<Enemy id = "2">
 			<con>70</con>
 			<str>21</str>
 			<dex>30</dex>
@@ -720,7 +720,7 @@
 	</Scene>
 
 	<Scene id = "Scene43" type = "combat">
-		<Enemy id = "Assulting Barbarian">
+		<Enemy id = "2">
 			<con>70</con>
 			<str>21</str>
 			<dex>30</dex>
@@ -736,14 +736,16 @@
        <RunDefeat>Scene41 </RunDefeat>
 	</Scene>
 
-	<Scene id = "Scene49" type = "combat">
-		<Enemy id = "Barbarian Horde Master">
+		<Scene id = "Scene49" type = "combat">
+		<Enemy id = "2">
 			<con>90</con>
 			<str>25</str>
 			<dex>30</dex>
 			<intl>20</intl>
 			<fth>80</fth>
 			<chr>45</chr>
+			<magic Dmg = "50">Helm Splitter</magic>
+			
 		</Enemy>
 		<SceneDescription> Barbarian Horde Master
 		</SceneDescription> 
