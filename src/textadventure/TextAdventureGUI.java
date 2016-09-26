@@ -245,7 +245,7 @@ public class TextAdventureGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void confirmbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmbuttonActionPerformed
-if(gameMode.equals("fight") ){
+        if(gameMode.equals("fight") ){
         int option = optionslist.getSelectedIndex();
         if (option == 0) {
             System.out.println("Attack");
@@ -290,10 +290,10 @@ if(gameMode.equals("fight") ){
         }
 }else
 {
-	   Choice choice = (Choice) optionslist.getSelectedValue();
-       Scene outCome = scenesMap.get(choice.getOutSceneId());
-     if (outCome != null) {
-          initScene(outCome);}}
+    Choice choice = (Choice) optionslist.getSelectedValue();
+    currenBatleScene = scenesMap.get(choice.getOutSceneId());
+    if (currenBatleScene != null) {
+        initScene(currenBatleScene);}}
     }//GEN-LAST:event_confirmbuttonActionPerformed
 
     
@@ -368,7 +368,7 @@ if(gameMode.equals("fight") ){
         	  optionsmodel.clear();
         	  //System.out.println(scene);
         	  currenBatleScene = scene;      	 
-    	       formWindowOpened();
+    	       formWindowOpened(scene);
         	  } else{
         		  model.addElement(scene.getDescription());
                    // txtpn.setCaretPosition(0);  
@@ -410,7 +410,7 @@ if(gameMode.equals("fight") ){
            
              List<Element> sceneChildren = sceneElement.getChildren();
              for (Element element : sceneChildren) {
-                 if (element.getName().equals("enemy")) {
+                 if (element.getName().equals("Enemy")) {
                      scene.getCharacters().add(this.buildCharacter(element));
                  }
              }
@@ -439,13 +439,25 @@ if(gameMode.equals("fight") ){
     	{
     		npc = new Character();
     		npc.setId(Integer.parseInt(id));
-    		npc.setCon(Integer.parseInt(charElement.getAttributeValue("con")));
-    		npc.setStr(Integer.parseInt(charElement.getAttributeValue("str")));
-    		npc.setDex(Integer.parseInt(charElement.getAttributeValue("dex")));
-    		npc.setIntl(Integer.parseInt(charElement.getAttributeValue("intl")));
-    		npc.setFth(Integer.parseInt(charElement.getAttributeValue("fth")));
-    		npc.setChr(Integer.parseInt(charElement.getAttributeValue("chr")));
-    		//npc.Stats(npc);
+    		List<Element> propList = charElement.getChildren();
+    		for(Element el : propList  ){
+    			if(el.getName().equals("con"))
+    				npc.setCon(Integer.parseInt(el.getText()));
+    			if(el.getName().equals("str"))
+    				npc.setStr(Integer.parseInt(el.getText()));
+    			if(el.getName().equals("intl"))
+    				npc.setIntl(Integer.parseInt(el.getText()));
+    			if(el.getName().equals("fth"))
+    				npc.setFth(Integer.parseInt(el.getText()));
+    			if(el.getName().equals("chr"))
+    				npc.setChr(Integer.parseInt(el.getText()));
+    			if(el.getName().equals("dex"))
+    				npc.setDex(Integer.parseInt(el.getText()));
+    			if(el.getName().equals("magic")) 
+    				npc.magic.put(el.getText(), Integer.parseInt(el.getAttributeValue("Dmg")));
+    			
+    		}
+    		
 
     	}
     	return npc;
@@ -455,16 +467,16 @@ if(gameMode.equals("fight") ){
     
     
 
-    private void formWindowOpened() {//GEN-FIRST:event_formWindowOpened
+    private void formWindowOpened(Scene scene) {//GEN-FIRST:event_formWindowOpened
     
        usemagiclabel.setVisible(false);
        label.setVisible(false);
        list.setVisible(false);
         usemagiclist.setVisible(true);
         //use.setVisible(false);
-
-        player = new Character();
-        system = new Character();
+        
+        player =new Character();
+        system = scene.getCharacters().get(0);;
 
         optionslabel.setVisible(false);
         optionslist.setVisible(false);
@@ -487,7 +499,7 @@ if(gameMode.equals("fight") ){
         optionsmodel.addElement("Use Item");
         optionsmodel.addElement("Flee");
 
-        setInitials();
+        setInitials(player,system);
 
         int pseed = player.roll(100) + player.getDex();
         int sseed = system.roll(100) + system.getDex();
@@ -637,74 +649,82 @@ if(gameMode.equals("fight") ){
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter("Playerfile.txt"));
             
-            bw.write(String.valueOf(currenBatleScene.getId()));
-            bw.newLine();
-            bw.write(weapon);
-            bw.newLine();
-            bw.write(String.valueOf(weaponHealth));
-            bw.newLine();
-            bw.write(String.valueOf(player.getChr()));
-            bw.newLine();
-            bw.write(String.valueOf(player.getCon()));
-            bw.newLine();
-            bw.write(String.valueOf(player.getDex()));
-            bw.newLine();
-            bw.write(String.valueOf(player.getFth()));
-            bw.newLine();
-            bw.write(String.valueOf(player.getId()));
-            bw.newLine();
-            bw.write(String.valueOf(player.getIntl()));
-            bw.newLine();
-            bw.write(String.valueOf(player.getStr()));
-            bw.newLine();
-            bw.write("Items");
-            for(String s:player.items.keySet())
+            if (gameMode == "story")
             {
-                 bw.write(","+s+" "+ player.items.get(s));
-            }
+                
+                bw.write(String.valueOf(currenBatleScene.getId()));
+            } else if (gameMode == "fight")
+                {
+                bw.write(String.valueOf(currenBatleScene.getId()));
+                bw.newLine();
+                bw.write(weapon);
+                bw.newLine();
+                bw.write(String.valueOf(weaponHealth));
+                bw.newLine();
+                bw.write(String.valueOf(player.getChr()));
+                bw.newLine();
+                bw.write(String.valueOf(player.getCon()));
+                bw.newLine();
+                bw.write(String.valueOf(player.getDex()));
+                bw.newLine();
+                bw.write(String.valueOf(player.getFth()));
+                bw.newLine();
+                bw.write(String.valueOf(player.getId()));
+                bw.newLine();
+                bw.write(String.valueOf(player.getIntl()));
+                bw.newLine();
+                bw.write(String.valueOf(player.getStr()));
+                bw.newLine();
+                bw.write("Items");
+                for(String s:player.items.keySet())
+                {
+                     bw.write(","+s+" "+ player.items.get(s));
+                }
             
-            bw.newLine();
-            bw.write("Magic");
-            for(String s:player.magic.keySet())
-            {
-                bw.write(","+s+" "+ player.magic.get(s));
-            }
-            bw.close();
+                bw.newLine();
+                bw.write("Magic");
+                for(String s:player.magic.keySet())
+                {
+                    bw.write(","+s+" "+ player.magic.get(s));
+                }
+            
+                bw.close();
             
             
-            bw = new BufferedWriter(new FileWriter("Systemfile.txt"));
+                bw = new BufferedWriter(new FileWriter("Systemfile.txt"));
             
      
-            bw.write(sweapon);
-            bw.newLine();
-            bw.write(String.valueOf(shealth));
-            bw.newLine();
-            bw.write(String.valueOf(system.getChr()));
-            bw.newLine();
-            bw.write(String.valueOf(system.getCon()));
-            bw.newLine();
-            bw.write(String.valueOf(system.getDex()));
-            bw.newLine();
-            bw.write(String.valueOf(system.getFth()));
-            bw.newLine();
-            bw.write(String.valueOf(system.getId()));
-            bw.newLine();
-            bw.write(String.valueOf(system.getIntl()));
-            bw.newLine();
-            bw.write(String.valueOf(system.getStr()));
-            
-            for(String s:system.items.keySet())
-            {
+                bw.write(sweapon);
                 bw.newLine();
-                bw.write(s+" "+ system.items.get(s));
-            }
-            
-            for(String s:system.magic.keySet())
-            {
+                bw.write(String.valueOf(shealth));
                 bw.newLine();
-                bw.write(s+" "+ system.magic.get(s));
+                bw.write(String.valueOf(system.getChr()));
+                bw.newLine();
+                bw.write(String.valueOf(system.getCon()));
+                bw.newLine();
+                bw.write(String.valueOf(system.getDex()));
+                bw.newLine();
+                bw.write(String.valueOf(system.getFth()));
+                bw.newLine();
+                bw.write(String.valueOf(system.getId()));
+                bw.newLine();
+                bw.write(String.valueOf(system.getIntl()));
+                bw.newLine();
+                bw.write(String.valueOf(system.getStr()));
+            
+                for(String s:system.items.keySet())
+                {
+                    bw.newLine();
+                    bw.write(s+" "+ system.items.get(s));
+                }
+            
+                for(String s:system.magic.keySet())
+                {
+                    bw.newLine();
+                    bw.write(s+" "+ system.magic.get(s));
+                }
+                bw.close();
             }
-            bw.close();
         } catch (IOException ex) {
             Logger.getLogger(TextAdventureGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -725,71 +745,79 @@ if(gameMode.equals("fight") ){
         try {
             BufferedReader br = new BufferedReader(new FileReader("Playerfile.txt"));
             
-            currenBatleScene.setID(br.readLine());
-            initScene(currenBatleScene);
-            weapon = br.readLine();
-            weaponHealth = Integer.parseInt(br.readLine());
-            player.setChr(Integer.parseInt(br.readLine()));
-            player.setCon(Integer.parseInt(br.readLine()));
-            player.setDex(Integer.parseInt(br.readLine()));
-            player.setFth(Integer.parseInt(br.readLine()));
-            player.setId(Integer.parseInt(br.readLine()));
-            player.setIntl(Integer.parseInt(br.readLine()));
-            player.setStr(Integer.parseInt(br.readLine()));
+            if (gameMode == "story")
+            {
+                currenBatleScene.setId(br.readLine());
+                initScene(currenBatleScene);
+            }
+            else if (gameMode == "fight") {
+                currenBatleScene.setId(br.readLine());
+                initScene(currenBatleScene);
+                weapon = br.readLine();
+                weaponHealth = Integer.parseInt(br.readLine());
+                player.setChr(Integer.parseInt(br.readLine()));
+                player.setCon(Integer.parseInt(br.readLine()));
+                player.setDex(Integer.parseInt(br.readLine()));
+                player.setFth(Integer.parseInt(br.readLine()));
+                player.setId(Integer.parseInt(br.readLine()));
+                player.setIntl(Integer.parseInt(br.readLine()));
+                player.setStr(Integer.parseInt(br.readLine()));
         
-            String item = br.readLine();
-            String magic = br.readLine();
+                String item = br.readLine();
+                String magic = br.readLine();
             
-            String[] items = item.split(",");
-            String[] magics = magic.split(",");
+                String[] items = item.split(",");
+                String[] magics = magic.split(",");
             
             
-            for(int i=1; i<items.length; i++)
-            {
-                String[] values = items[i].split(" ");
-                player.items.put(values[0], Integer.parseInt(values[1]));
-            }
+                for(int i=1; i<items.length; i++)
+                {
+                    String[] values = items[i].split(" ");
+                    player.items.put(values[0], Integer.parseInt(values[1]));
+                }
             
-            for(int i=1; i<magics.length; i++)
-            {
-                String[] values = magics[i].split(" ");
-                player.magic.put(values[0], Integer.parseInt(values[1]));
-            }
-            br.close();
+                for(int i=1; i<magics.length; i++)
+                {
+                    String[] values = magics[i].split(" ");
+                    player.magic.put(values[0], Integer.parseInt(values[1]));
+                }
+                br.close();
             
-            br = new BufferedReader(new FileReader("Systemfile.txt"));
+                br = new BufferedReader(new FileReader("Systemfile.txt"));
             
-            sweapon = br.readLine();
-            shealth = Integer.parseInt(br.readLine());
-            system.setChr(Integer.parseInt(br.readLine()));
-            system.setCon(Integer.parseInt(br.readLine()));
-            system.setDex(Integer.parseInt(br.readLine()));
-            system.setFth(Integer.parseInt(br.readLine()));
-            system.setId(Integer.parseInt(br.readLine()));
-            system.setIntl(Integer.parseInt(br.readLine()));
-            system.setStr(Integer.parseInt(br.readLine()));
+                sweapon = br.readLine();
+                shealth = Integer.parseInt(br.readLine());
+                system.setChr(Integer.parseInt(br.readLine()));
+                system.setCon(Integer.parseInt(br.readLine()));
+                system.setDex(Integer.parseInt(br.readLine()));
+                system.setFth(Integer.parseInt(br.readLine()));
+                system.setId(Integer.parseInt(br.readLine()));
+                system.setIntl(Integer.parseInt(br.readLine()));
+                system.setStr(Integer.parseInt(br.readLine()));
         
-            item = br.readLine();
-            magic = br.readLine();
+                item = br.readLine();
+                magic = br.readLine();
             
-            String[] items1 = item.split(",");
-            String[] magics1 = magic.split(",");
+                String[] items1 = item.split(",");
+                String[] magics1 = magic.split(",");
             
             
-            for(int i=1; i<items1.length; i++)
-            {
-                String[] values = items1[i].split(" ");
-                system.items.put(values[0], Integer.parseInt(values[0]));
+                for(int i=1; i<items1.length; i++)
+                {
+                    String[] values = items1[i].split(" ");
+                    system.items.put(values[0], Integer.parseInt(values[0]));
+                }
+            
+                for(int i=1; i<magics1.length; i++)
+                {
+                    String[] values = magics1[i].split(" ");
+                    system.magic.put(values[0], Integer.parseInt(values[0]));
+                }
+                br.close();
             }
-            
-            for(int i=1; i<magics1.length; i++)
-            {
-                String[] values = magics1[i].split(" ");
-                system.magic.put(values[0], Integer.parseInt(values[0]));
-            }
-            br.close();
             
             setModels();
+        
             
         } catch (FileNotFoundException ex) {
             Logger.getLogger(TextAdventureGUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -821,7 +849,7 @@ if(gameMode.equals("fight") ){
         });
     }
 
-    void setInitials() {
+    void setInitials(Character you,Character enemy) {
         player.setId(1);
         player.setCon(100);
         player.setChr(50);
@@ -834,19 +862,12 @@ if(gameMode.equals("fight") ){
         player.magic.put("FireBall", 45);
         player.magic.put("lightningBolt", 40);
         
+        system = enemy;       
+      
         
-        
-        system.setId(2);
-        system.setCon(75);
-        system.setChr(20);
-        system.setStr(20);
-        system.setDex(50);
-        system.setIntl(50);
-        system.setFth(50);
         system.items.put("Axe", 100);
         system.items.put("Hammer", 150);
-        system.magic.put("BloodRapture", 200);
-        system.magic.put("HelmSplitter", 60);
+       
 
         setModels();
     }
