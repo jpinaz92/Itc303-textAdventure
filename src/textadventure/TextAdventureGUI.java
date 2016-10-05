@@ -360,23 +360,35 @@ public class TextAdventureGUI extends javax.swing.JFrame {
     }
     
     public void initScene(Scene scene) {
-      if (scene == null)System.out.println(currenBatleScene.getVictory());
-      if (scene == null)System.out.println(scenesMap.get(currenBatleScene.getVictory()));
+        if (scene == null)System.out.println(currenBatleScene.getVictory());
+        if (scene == null)System.out.println(scenesMap.get(currenBatleScene.getVictory()));
         if( scene.getType() != null && scene.getType().equals("combat")){
-        	  model.addElement(scene.getDescription());  
-        	  gameMode="fight";  
-        	  optionsmodel.clear();
-        	  //System.out.println(scene);
-        	  currenBatleScene = scene;      	 
-    	       formWindowOpened(scene);
-        	  } else{
-        		  model.addElement(scene.getDescription());
-                   // txtpn.setCaretPosition(0);  
-                  optionsmodel.clear();
-                  for (Choice choice : scene.getChoices()) 
-                 	optionsmodel.addElement(choice);
-       
-        	  }
+            model.addElement(scene.getDescription());  
+            gameMode="fight";  
+            optionsmodel.clear();
+            //System.out.println(scene);
+            currenBatleScene = scene;   
+            
+            //fix to reset character stats
+            scene.clearCharacters();
+            Element sceneElement = scene.getElement();
+            List<Element> sceneChildren = sceneElement.getChildren();
+            for (Element element : sceneChildren) {
+                if (element.getName().equals("Enemy")) {
+                    scene.getCharacters().add(this.buildCharacter(element));
+                }
+            }
+
+            
+            formWindowOpened(scene);
+        } else {
+            model.addElement(scene.getDescription());
+            // txtpn.setCaretPosition(0);  
+            optionsmodel.clear();
+            for (Choice choice : scene.getChoices()) 
+                optionsmodel.addElement(choice);
+
+        }
     }
     
     
@@ -387,7 +399,7 @@ public class TextAdventureGUI extends javax.swing.JFrame {
         String type = sceneElement.getAttributeValue("type");
         if (id != null &&(  type == null||(type != null &&!type.equals("combat")))) {
             String sceneDescription = sceneElement.getChild("SceneDescription").getText();
-            scene = new Scene(id, sceneDescription, type);                     
+            scene = new Scene(id, sceneDescription, type, sceneElement);                     
             List<Element> sceneChildren = sceneElement.getChildren();
             for (Element element : sceneChildren) {
                 if (element.getName().equals("choice")) {
@@ -397,7 +409,7 @@ public class TextAdventureGUI extends javax.swing.JFrame {
         }
          else  {
         	   String sceneDescription = sceneElement.getChild("SceneDescription").getText();
-               scene = new Scene(id, sceneDescription, type);           
+               scene = new Scene(id, sceneDescription, type, sceneElement);           
                String sceneVictory = sceneElement.getChild("Victory").getText().trim();
                String sceneRunVictory = sceneElement.getChild("RunVictory").getText().trim();
                String sceneDefeat = sceneElement.getChild("Defeat").getText().trim();

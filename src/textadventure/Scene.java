@@ -3,12 +3,14 @@ package textadventure;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import org.jdom.Element;
 
 /**
  *
  * @author user
  */
 public class Scene {
+   private Element element;
    private  String id;
    private String description;
    private String type;
@@ -42,18 +44,28 @@ public class Scene {
         return true;
     }
 
-    public Scene(String id, String description, String type) {
+    public Scene(String id, String description, String type, Element element) {
+        this.element = element;
         this.id = id;
         this.description = description;
         this.type = type;
     }
 
+    public Element getElement() {
+        return element;
+    }
+    
+    
     public List<Choice> getChoices() {
         return choices;
     }
     
     public List<Character> getCharacters() {
     	return characters;
+    }
+    
+    public void clearCharacters() {
+        characters.clear();
     }
 
     public String getId() {
