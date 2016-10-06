@@ -31,7 +31,7 @@ public class Choice {
 
     @Override
     public String toString() {
-        return "Choice{" + "description=" + description + '}';
+        return description;
     }
 
 }
