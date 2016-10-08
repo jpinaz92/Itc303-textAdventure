@@ -74,46 +74,39 @@ public class TextAdventureGUI extends javax.swing.JFrame {
     // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        optionslist = new javax.swing.JList();
-        overViewTA = new JTextArea();
-        list = new javax.swing.JList();
-        playerlist = new javax.swing.JList();
-        usemagiclist = new javax.swing.JList();
-        enemylist = new javax.swing.JList();
-
         jLabel1 = new javax.swing.JLabel();
-        jLabel1.setBounds(10, 373, 90, 14);
+        jLabel1.setBounds(12, 415, 118, 14);
         jLabel2 = new javax.swing.JLabel();
-        jLabel2.setBounds(215, 373, 193, 14);
+        jLabel2.setBounds(248, 415, 193, 14);
         jLabel3 = new javax.swing.JLabel();
-        jLabel3.setBounds(10, 11, 198, 14);
+        jLabel3.setBounds(10, 13, 198, 14);
         optionslabel = new javax.swing.JLabel();
-        optionslabel.setBounds(10, 216, 70, 14);
+        optionslabel.setBounds(12, 245, 118, 14);
         jScrollPane1 = new javax.swing.JScrollPane();
-        jScrollPane1.setBounds(10, 235, 501, 130);
+        jScrollPane1.setBounds(10, 272, 668, 130);
         jScrollPane2 = new javax.swing.JScrollPane();
-        jScrollPane2.setBounds(10, 29, 501, 176);
+        jScrollPane2.setBounds(10, 40, 668, 192);
         jScrollPane2.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         confirmbutton = new javax.swing.JButton();
-        confirmbutton.setBounds(532, 273, 90, 49);
+        confirmbutton.setBounds(690, 272, 80, 49);
         load = new javax.swing.JButton();
-        load.setBounds(663, 50, 70, 49);
+        load.setBounds(690, 41, 80, 49);
         save = new javax.swing.JButton();
-        save.setBounds(546, 50, 80, 49);
+        save.setBounds(690, 103, 80, 49);
         jScrollPane3 = new javax.swing.JScrollPane();
-        jScrollPane3.setBounds(10, 398, 170, 152);
+        jScrollPane3.setBounds(10, 442, 198, 198);
         jScrollPane4 = new javax.swing.JScrollPane();
-        jScrollPane4.setBounds(215, 398, 174, 152);
+        jScrollPane4.setBounds(245, 442, 196, 198);
         jScrollPane5 = new javax.swing.JScrollPane();
-        jScrollPane5.setBounds(647, 235, 80, 130);
+        jScrollPane5.setBounds(481, 442, 197, 198);
         label = new javax.swing.JLabel();
-        label.setBounds(647, 216, 80, 14);
+        label.setBounds(481, 415, 80, 14);
         usemagiclabel = new javax.swing.JLabel();
-        usemagiclabel.setBounds(647, 216, 80, 14);
+        usemagiclabel.setBounds(481, 415, 80, 14);
         jScrollPane6 = new javax.swing.JScrollPane();
-        jScrollPane6.setBounds(647, 235, 80, 130);
+        jScrollPane6.setBounds(482, 442, 196, 198);
         use = new javax.swing.JButton();
-        use.setBounds(647, 376, 80, 49);
+        use.setBounds(690, 442, 80, 49);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new Dimension(800, 700));
@@ -174,9 +167,12 @@ public class TextAdventureGUI extends javax.swing.JFrame {
         getContentPane().add(confirmbutton);
         getContentPane().add(optionslabel);
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setViewportView(optionslist);
-        optionslist.setModel(optionsmodel);
+        
+                optionslist = new javax.swing.JList();
+                jScrollPane1.setViewportView(optionslist);
+                optionslist.setModel(optionsmodel);
         getContentPane().add(jScrollPane2);
+        overViewTA = new JTextArea();
         jScrollPane2.setViewportView(overViewTA);
         overViewTA.setWrapStyleWord(true);
         overViewTA.setLineWrap(true);
@@ -185,15 +181,19 @@ public class TextAdventureGUI extends javax.swing.JFrame {
         getContentPane().add(usemagiclabel);
         getContentPane().add(label);
         getContentPane().add(jScrollPane5);
+        list = new javax.swing.JList();
         jScrollPane5.setViewportView(list);
         list.setVisible(false);
         getContentPane().add(jScrollPane6);
+        usemagiclist = new javax.swing.JList();
         jScrollPane6.setViewportView(usemagiclist);
         usemagiclist.setVisible(false);
         getContentPane().add(use);
         getContentPane().add(jScrollPane3);
+        playerlist = new javax.swing.JList();
         jScrollPane3.setViewportView(playerlist);
         getContentPane().add(jScrollPane4);
+        enemylist = new javax.swing.JList();
         jScrollPane4.setViewportView(enemylist);
         getContentPane().add(jLabel3);
         getContentPane().add(load);
