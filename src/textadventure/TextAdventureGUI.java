@@ -173,6 +173,7 @@ public class TextAdventureGUI extends javax.swing.JFrame {
                 optionslist.setModel(optionsmodel);
         getContentPane().add(jScrollPane2);
         overViewTA = new JTextArea();
+        overViewTA.setEditable(false);
         jScrollPane2.setViewportView(overViewTA);
         overViewTA.setWrapStyleWord(true);
         overViewTA.setLineWrap(true);
@@ -341,6 +342,8 @@ public class TextAdventureGUI extends javax.swing.JFrame {
             model.addElement(scene.getDescription());
             overViewTA.setText(scene.getDescription());
             overViewTA.repaint();
+            javax.swing.text.DefaultCaret caret = (DefaultCaret) overViewTA.getCaret();
+            caret.setUpdatePolicy(javax.swing.text.DefaultCaret.ALWAYS_UPDATE);
             System.out.println("Textarea reset");
             gameMode = "fight";
             optionsmodel.clear();
@@ -362,6 +365,9 @@ public class TextAdventureGUI extends javax.swing.JFrame {
             model.addElement(scene.getDescription());
             overViewTA.setText(scene.getDescription());
             overViewTA.repaint();
+            javax.swing.text.DefaultCaret caret = (DefaultCaret) overViewTA.getCaret();
+            caret.setUpdatePolicy(javax.swing.text.DefaultCaret.NEVER_UPDATE);
+
             System.out.println("Textarea reset");
             // txtpn.setCaretPosition(0);
             optionsmodel.clear();
