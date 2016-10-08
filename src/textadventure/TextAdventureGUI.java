@@ -78,7 +78,6 @@ public class TextAdventureGUI extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         optionslist = new javax.swing.JList();
         jScrollPane2 = new javax.swing.JScrollPane();
-        overviewlist = new javax.swing.JList();
         confirmbutton = new javax.swing.JButton();
         load = new javax.swing.JButton();
         save = new javax.swing.JButton();
@@ -118,7 +117,6 @@ public class TextAdventureGUI extends javax.swing.JFrame {
         systemmodel = new DefaultListModel();
         optionsmodel = new DefaultListModel();
         listmodel = new DefaultListModel();
-        overviewlist.setModel(model);
         optionslist.setModel(optionsmodel);
         
 
@@ -131,8 +129,6 @@ public class TextAdventureGUI extends javax.swing.JFrame {
         optionslabel.setText("Player Options");
 
         jScrollPane1.setViewportView(optionslist);
-
-        jScrollPane2.setViewportView(overviewlist);
 
         confirmbutton.setText("Confirm");
        
@@ -553,7 +549,7 @@ public class TextAdventureGUI extends javax.swing.JFrame {
 
         playerlist.setModel(playermodel);
         enemylist.setModel(systemmodel);
-        overviewlist.setModel(model);
+        //overviewlist.setModel(model);
         optionslist.setModel(optionsmodel);
         list.setModel(listmodel);
 
@@ -1083,7 +1079,6 @@ public class TextAdventureGUI extends javax.swing.JFrame {
     private javax.swing.JButton load;
     private javax.swing.JLabel optionslabel;
     private javax.swing.JList optionslist;
-    private javax.swing.JList overviewlist;
     private javax.swing.JList playerlist;
     private javax.swing.JButton save;
     private javax.swing.JButton use;
