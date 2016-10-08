@@ -24,11 +24,18 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.SwingUtilities;
+import javax.swing.text.DefaultCaret;
 
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
+import javax.swing.JScrollPane;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.GroupLayout;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JTextArea;
+import javax.swing.ScrollPaneConstants;
 
 /**
  *
@@ -86,6 +93,16 @@ public class TextAdventureGUI extends javax.swing.JFrame {
         jScrollPane6 = new javax.swing.JScrollPane();
         usemagiclist = new javax.swing.JList();
         use = new javax.swing.JButton();
+        
+        scrollPane = new JScrollPane();
+        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        overViewTA = new JTextArea();
+        overViewTA.setWrapStyleWord(true);
+        overViewTA.setLineWrap(true);
+        javax.swing.text.DefaultCaret caret = (DefaultCaret) overViewTA.getCaret();
+        caret.setUpdatePolicy(javax.swing.text.DefaultCaret.ALWAYS_UPDATE);
+        scrollPane.setViewportView(overViewTA);
+
         
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(500, 500));
@@ -157,89 +174,102 @@ public class TextAdventureGUI extends javax.swing.JFrame {
                 useActionPerformed(evt);
             }
         });
+        
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(260, 260, 260)
-                        .addComponent(confirmbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(260, 260, 260)
-                        .addComponent(optionslabel))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(188, 188, 188)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(260, 260, 260)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(usemagiclabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(label, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(use)))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addComponent(load)
-                .addGap(95, 95, 95)
-                .addComponent(save))
+            layout.createParallelGroup(Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(10)
+                    .addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, 191, GroupLayout.PREFERRED_SIZE)
+                    .addGap(2)
+                    .addComponent(jLabel2, GroupLayout.PREFERRED_SIZE, 193, GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(10)
+                    .addGroup(layout.createParallelGroup(Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(260)
+                                    .addComponent(confirmbutton, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(260)
+                                    .addComponent(optionslabel))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(260)
+                                    .addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jScrollPane2, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE))
+                            .addGap(18)
+                            .addGroup(layout.createParallelGroup(Alignment.LEADING)
+                                .addComponent(usemagiclabel, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(label, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane5, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane6, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(use)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(Alignment.LEADING)
+                                .addComponent(jScrollPane3, GroupLayout.PREFERRED_SIZE, 170, GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(188)
+                                    .addComponent(jScrollPane4, GroupLayout.PREFERRED_SIZE, 174, GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel3, GroupLayout.PREFERRED_SIZE, 198, GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(ComponentPlacement.UNRELATED)
+                            .addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 229, GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap())
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(79)
+                    .addComponent(load)
+                    .addGap(95)
+                    .addComponent(save))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(339, 339, 339)
-                        .addComponent(confirmbutton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(159, 159, 159)
-                        .addComponent(optionslabel))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(149, 149, 149)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(179, 179, 179)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(169, 169, 169)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(159, 159, 159)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(usemagiclabel)
-                            .addComponent(label))
-                        .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
-                        .addComponent(use)))
-                .addGap(44, 44, 44)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(load)
-                    .addComponent(save)))
+            layout.createParallelGroup(Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(11)
+                    .addGroup(layout.createParallelGroup(Alignment.LEADING)
+                        .addComponent(jLabel1)
+                        .addComponent(jLabel2))
+                    .addGap(6)
+                    .addGroup(layout.createParallelGroup(Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(339)
+                            .addComponent(confirmbutton))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(159)
+                            .addComponent(optionslabel))
+                        .addComponent(jScrollPane3, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane4, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(149)
+                            .addComponent(jLabel3, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(169)
+                            .addComponent(jScrollPane2, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 157, GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(22)
+                                    .addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(2)
+                                    .addGroup(layout.createParallelGroup(Alignment.LEADING)
+                                        .addComponent(usemagiclabel)
+                                        .addComponent(label))
+                                    .addGap(6)
+                                    .addGroup(layout.createParallelGroup(Alignment.LEADING)
+                                        .addComponent(jScrollPane5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jScrollPane6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                    .addGap(20)
+                                    .addComponent(use)))))
+                    .addGap(44)
+                    .addGroup(layout.createParallelGroup(Alignment.LEADING)
+                        .addComponent(load)
+                        .addComponent(save)))
         );
+        
+        getContentPane().setLayout(layout);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -250,13 +280,19 @@ public class TextAdventureGUI extends javax.swing.JFrame {
         if (option == 0) {
             System.out.println("Attack");
             model.addElement("Player Chooses to attack");
+            overViewTA.setText(overViewTA.getText() + "\n" + "Player Chooses to attack");
+            overViewTA.repaint();
             Random n = new Random();
             int attack = n.nextInt(20);
             int intelligence = player.getIntl();
             int enemyDex = system.getDex();
             if ((attack + intelligence) > enemyDex) {
-                model.addElement("Attack done successfully");
-                model.addElement("Player has made a damage to Enemy");
+                model.addElement("Attack successful");
+                overViewTA.setText(overViewTA.getText() + "\n" + "Attack successful");
+                overViewTA.repaint();
+                model.addElement("Player has damaged Enemy");
+                overViewTA.setText(overViewTA.getText() + "\n" + "Player has damaged Enemy");
+                overViewTA.repaint();
                 attack(weapon);
             }
 
@@ -264,6 +300,8 @@ public class TextAdventureGUI extends javax.swing.JFrame {
                 SystemTurn();
             } else {
                 model.addElement("Player Wins");
+                overViewTA.setText(overViewTA.getText() + "\n" + "Player Wins");
+                overViewTA.repaint();
                  
                 playermodel.clear();
                 systemmodel.clear();
@@ -274,16 +312,22 @@ public class TextAdventureGUI extends javax.swing.JFrame {
         } else if (option == 1) {
             System.out.println("Use Magic");
             model.addElement("Player Chooses to Use Magic");
+            overViewTA.setText(overViewTA.getText() + "\n" + "Player Chooses to Use Magic");
+            overViewTA.repaint();
 
             useMagic();
         } else if (option == 2) {
             System.out.println("Use Item");
             model.addElement("Player Chooses to Use Item");
+            overViewTA.setText(overViewTA.getText() + "\n" + "Player Chooses to Use Item");
+            overViewTA.repaint();
 
             useItem();
         } else if (option == 3) {
             System.out.println("Flee");
             model.addElement("Player Chooses to Flee");
+            overViewTA.setText(overViewTA.getText() + "\n" + "Player Chooses to Use Flee");
+            overViewTA.repaint();
 
             Flee();
             System.out.println("Back in confirmbuttonActionPerformed");
@@ -291,7 +335,8 @@ public class TextAdventureGUI extends javax.swing.JFrame {
 }else
 {
     Choice choice = (Choice) optionslist.getSelectedValue();
-    currenBatleScene = scenesMap.get(choice.getOutSceneId());
+    if (choice != null)
+        currenBatleScene = scenesMap.get(choice.getOutSceneId());
     if (currenBatleScene != null) {
         initScene(currenBatleScene);}}
     }//GEN-LAST:event_confirmbuttonActionPerformed
@@ -363,7 +408,10 @@ public class TextAdventureGUI extends javax.swing.JFrame {
         if (scene == null)System.out.println(currenBatleScene.getVictory());
         if (scene == null)System.out.println(scenesMap.get(currenBatleScene.getVictory()));
         if( scene.getType() != null && scene.getType().equals("combat")){
-            model.addElement(scene.getDescription());  
+            model.addElement(scene.getDescription()); 
+            overViewTA.setText(scene.getDescription());
+            overViewTA.repaint();
+            System.out.println("Textarea reset");
             gameMode="fight";  
             optionsmodel.clear();
             //System.out.println(scene);
@@ -383,6 +431,9 @@ public class TextAdventureGUI extends javax.swing.JFrame {
             formWindowOpened(scene);
         } else {
             model.addElement(scene.getDescription());
+            overViewTA.setText(scene.getDescription());
+            overViewTA.repaint();
+            System.out.println("Textarea reset");
             // txtpn.setCaretPosition(0);  
             optionsmodel.clear();
             for (Choice choice : scene.getChoices()) 
@@ -516,23 +567,35 @@ public class TextAdventureGUI extends javax.swing.JFrame {
         int pseed = player.roll(100) + player.getDex();
         int sseed = system.roll(100) + system.getDex();
         System.out.println(pseed);
-        model.addElement("Players Rolling");
+        model.addElement("Player Rolling");
+        overViewTA.setText(overViewTA.getText() + "\n" + "PPlayer Rolling");
+        overViewTA.repaint();
         int p = 0;
         try {
 
             pause();
 
             model.addElement("Players number is " + String.valueOf(pseed));
+            overViewTA.setText(overViewTA.getText() + "\n" + "Players number is " + String.valueOf(pseed));
+            overViewTA.repaint();
 
             model.addElement("System Rolling");
+            overViewTA.setText(overViewTA.getText() + "\n" + "System Rolling");
+            overViewTA.repaint();
 
             model.addElement("System number is " + String.valueOf(sseed));
+            overViewTA.setText(overViewTA.getText() + "\n" + "System number is " + String.valueOf(sseed));
+            overViewTA.repaint();
 
             if (pseed > sseed) {
                 model.addElement("Players turn first");
+                overViewTA.setText(overViewTA.getText() + "\n" + "Players turn first");
+                overViewTA.repaint();
                 p++;
             } else {
                 model.addElement("System turn first");
+                overViewTA.setText(overViewTA.getText() + "\n" + "System turn first");
+                overViewTA.repaint();
             }
         } catch (InterruptedException ex) {
             Logger.getLogger(TextAdventureGUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -558,9 +621,13 @@ public class TextAdventureGUI extends javax.swing.JFrame {
             double flee = player.getChr() / (system.getCon() * 2);
             if (r < flee) {
                 model.addElement("Enemy is Desperate");
+                overViewTA.setText(overViewTA.getText() + "\n" + "Enemy is Desperate");
+                overViewTA.repaint();
                 int c = system.roll(3);
                 if (c == 1) {
                 model.addElement("Enemy Flees");
+                overViewTA.setText(overViewTA.getText() + "\n" + "Enemy Flees");
+                overViewTA.repaint();
                 gameMode = "story";
                 playermodel.clear();
                 systemmodel.clear();
@@ -577,6 +644,8 @@ public class TextAdventureGUI extends javax.swing.JFrame {
                     }
                     if (r < temp) {
                         model.addElement("System used Spell " + magic);
+                        overViewTA.setText(overViewTA.getText() + "\n" + "System used Spell " + magic);
+                        overViewTA.repaint();
                         system.setCon(system.getCon() - magicPower);
                     }
                 } else {
@@ -587,6 +656,8 @@ public class TextAdventureGUI extends javax.swing.JFrame {
                         wh = system.items.get(s);
                     }
                     model.addElement("System switching weapon " + w);
+                    overViewTA.setText(overViewTA.getText() + "\n" + "System switching weapon " + w);
+                    overViewTA.repaint();
                     system.items.put(sweapon, shealth);
                     sweapon = w;
                     shealth = system.items.get(w);
@@ -594,6 +665,8 @@ public class TextAdventureGUI extends javax.swing.JFrame {
                 }
             } else {
                 model.addElement("Enemy Attacks");
+                overViewTA.setText(overViewTA.getText() + "\n" + "Enemy Attacks");
+                overViewTA.repaint();
                 system.setStr(system.getStr() + 5);
                 system.setDex(system.getDex() + 5);
                 system.setIntl(system.getIntl() + 5);
@@ -604,12 +677,16 @@ public class TextAdventureGUI extends javax.swing.JFrame {
                 player.setDex(player.getDex() - 4);
                 player.setCon(player.getCon() - 20);
 
-                model.addElement("Enemy has made a damage to Player");
+                model.addElement("Enemy has damaged Player");
+                overViewTA.setText(overViewTA.getText() + "\n" + "Enemy has damaged Player");
+                overViewTA.repaint();
                 setModels();
             }
 
             if (player.getCon() <= 0) {
                 model.addElement("Enemy Wins.");
+                overViewTA.setText(overViewTA.getText() + "\n" + "Enemy Wins.");
+                overViewTA.repaint();
                 
                 optionslabel.setVisible(false);
                 optionslist.setVisible(false);
@@ -621,6 +698,8 @@ public class TextAdventureGUI extends javax.swing.JFrame {
             }
         } else {
             model.addElement("Player Wins.");
+            overViewTA.setText(overViewTA.getText() + "\n" + "Player Wins.");
+            overViewTA.repaint();
             gameMode = "story";
             playermodel.clear();
             systemmodel.clear();
@@ -634,6 +713,8 @@ public class TextAdventureGUI extends javax.swing.JFrame {
             int index = list.getSelectedIndex();
             String magic = listmodel.get(index).toString();
             model.addElement("Player used magic " + magic);
+            overViewTA.setText(overViewTA.getText() + "\n" + "Player used magic " + magic);
+            overViewTA.repaint();
             magicEffect = player.magic.get(magic);
             player.magic.remove(magic);
             usemagiclabel.setVisible(false);
@@ -643,6 +724,8 @@ public class TextAdventureGUI extends javax.swing.JFrame {
             int index = list.getSelectedIndex();
             String item = listmodel.get(index).toString();
             model.addElement("Player Switched weapon to " + item);
+            overViewTA.setText(overViewTA.getText() + "\n" + "Player Switched weapon to " + item);
+            overViewTA.repaint();
 
             player.items.put(weapon, weaponHealth);
             weapon = item;
@@ -988,6 +1071,7 @@ public class TextAdventureGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane scrollPane;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -1005,5 +1089,5 @@ public class TextAdventureGUI extends javax.swing.JFrame {
     private javax.swing.JButton use;
     private javax.swing.JLabel usemagiclabel;
     private javax.swing.JList usemagiclist;
-    // End of variables declaration//GEN-END:variables
+    private javax.swing.JTextArea overViewTA;
 }
