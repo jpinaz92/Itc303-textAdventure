@@ -493,7 +493,7 @@ public class TextAdventureGUI extends javax.swing.JFrame {
         int sseed = system.roll(100) + system.getDex();
         System.out.println(pseed);
         model.addElement("Player Rolling");
-        overViewTA.setText(overViewTA.getText() + "\n" + "PPlayer Rolling");
+        overViewTA.setText(overViewTA.getText() + "\n" + "Player Rolling");
         overViewTA.repaint();
         int p = 0;
         try {
@@ -965,7 +965,7 @@ public class TextAdventureGUI extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JButton confirmbutton;
     private javax.swing.JList enemylist;
     private javax.swing.JLabel jLabel1;

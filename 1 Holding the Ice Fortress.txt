@@ -2,9 +2,8 @@
 <Story>
 
 	<Scene id = "Scene1">
-		<SceneDescription>Awaking in the dark to the feel of a cold damp floor, you reach out in front of you, scrambling to find where you are.
-
-The rambling of another in this room breaks the silence as you stare off into the darkness of the room. Chuckling to themself, the voice speaks up toward you.</SceneDescription>
+		<SceneDescription>. Awaking in the dark to the feel of a cold damp floor, you reach out in front of you, scrambling to find where you are.The rambling of another in this room breaks the silence as you stare off into the darkness of the room.Chuckling to them self, the voice speaks up toward you.
+		</SceneDescription>
 	
 		<choice no="1">
 			<choiceDescription> Continue.
@@ -15,23 +14,7 @@ The rambling of another in this room breaks the silence as you stare off into th
 	</Scene>
 
 	<Scene id = "Scene2">
-		<SceneDescription>"You! Poor soul that has awoken in the dark, what are you? Some kind of Knight errant?"
-		
-"Ahh never mind then, what a wondrous event you are bearing witness to. The fall of an age but the birth of a new."
-
-Unable to speak up your voice lets out a gargling groan toward the voice in the dark.
-
-"Owww, lost your way in Descron have we (Player Name),well... Welcome to the Tabula Rasa....."
-
-Emanating a soft blue light ever so slightly you see a decrepit hand move closer to you.
-
-"This is the hand of a life burdened to watch many wander these halls of despair, I ask you, take it and see the world righted."
-
-Reaching out towards his hand and grasping it you are lifted to your feet. The space around you still black and cold.
-
-"I ask you what would be your profession child? What made you remembered throughout your days, what made you loved... hated..."
-
-The hand grasping yours pulls downward to a set of weapons, dimly lit by the same blue light.
+		<SceneDescription> "You! Pour soul that has awoken in the dark, what are you? some kind of Knight errant?"Ahh never mind then, what a wondrous event you are baring witness too. The fall of an age but the birth of a new"Unable to speak up your voice lets out a gargling groan toward the voice in the dark."Owww, lost your way in Descron have we (Player Name),well... Welcome to the Tabula Rasa....."Emanating a soft blue light ever so slightly you see a decrepit hand move closer to you."This is the hand of a life burdened to watch many wander these halls of despair, I ask you, take it and see the world righted."Reaching out towards his hand and grasping it you are lifted to your feet. The space around you still black and cold."I ask you what would be your profession child? What made you remembered throughout your days, what made you loved... hated..."The hand grasping yours pulls downward to a set of weapons, dimly lit by the same blue light.
 		</SceneDescription>
 		
 		<choice no="1">
